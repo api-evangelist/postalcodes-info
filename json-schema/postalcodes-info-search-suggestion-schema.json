@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/postalcodes-info/main/json-schema/postalcodes-info-search-suggestion-schema.json",
+  "title": "SearchSuggestion",
+  "description": "A lightweight lookup suggestion returned by /search. Used to power autocomplete in the PostalCodes.info UI.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Suggestion class.",
+      "enum": ["Country", "Town/City", "Postal Code", "Region"]
+    },
+    "text": {
+      "type": "string",
+      "description": "Primary display label."
+    },
+    "sub": {
+      "type": "string",
+      "description": "Secondary context label (typically the parent country or region)."
+    },
+    "url": {
+      "type": "string",
+      "description": "Same-origin URL to the canonical lookup page for the suggestion.",
+      "pattern": "^/postal-codes/"
+    }
+  },
+  "required": ["type", "text", "sub", "url"],
+  "additionalProperties": false
+}

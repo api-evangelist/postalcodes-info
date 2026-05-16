@@ -1,0 +1,148 @@
+extends:
+  - spectral:oas
+
+documentationUrl: https://postalcodes.info/api
+
+rules:
+  # Provider identity
+  postalcodes-info-contact-required:
+    description: PostalCodes.info specs must keep contact details for the maintainer.
+    message: 'info.contact.email is required and should point to PostalCodes.info maintainer.'
+    severity: error
+    given: $.info.contact
+    then:
+      - field: email
+        function: truthy
+      - field: url
+        function: truthy
+
+  postalcodes-info-license-odbl:
+    description: PostalCodes.info data is published under the Open Database License (ODbL) 1.0.
+    message: 'info.license should reference the Open Database License (ODbL) 1.0.'
+    severity: warn
+    given: $.info.license
+    then:
+      - field: name
+        function: pattern
+        functionOptions:
+          match: '(?i)open database license|odbl'
+      - field: url
+        function: pattern
+        functionOptions:
+          match: 'opendatacommons\\.org/licenses/odbl'
+
+  postalcodes-info-server-canonical-host:
+    description: The canonical server must point at https://postalcodes.info.
+    message: 'servers[].url must reference https://postalcodes.info.'
+    severity: error
+    given: $.servers[*]
+    then:
+      field: url
+      function: pattern
+      functionOptions:
+        match: '^https://postalcodes\\.info(/.*)?$'
+
+  # Operations and summaries
+  postalcodes-info-operation-summary-title-case:
+    description: Operation summaries must use Title Case to match the documentation portal.
+    message: 'Operation summary "{{value}}" should use Title Case.'
+    severity: warn
+    given: $.paths.*.*.summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z0-9][A-Za-z0-9 ,\\-\\(\\)/]*$'
+
+  postalcodes-info-operation-id-camel:
+    description: operationId values should be lowerCamelCase verbs.
+    message: 'operationId "{{value}}" should be lowerCamelCase.'
+    severity: warn
+    given: $.paths.*.*.operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]+$'
+
+  postalcodes-info-operation-tags-allowed:
+    description: Only Search, Downloads and Lookup Pages tags are sanctioned for postalcodes.info paths.
+    message: 'Operation tag "{{value}}" is not one of the sanctioned tags.'
+    severity: warn
+    given: $.paths.*.*.tags[*]
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - Search
+          - Downloads
+          - Lookup Pages
+
+  # Parameters
+  postalcodes-info-country-code-pattern:
+    description: ISO 3166-1 alpha-2 country code parameters must use a 2-letter pattern.
+    message: 'country parameter must be constrained to a 2-letter ISO 3166-1 alpha-2 code.'
+    severity: warn
+    given: $.paths.*.*.parameters[?(@.name=="country" && @.in=="query")].schema
+    then:
+      field: pattern
+      function: pattern
+      functionOptions:
+        match: '\\^\\[A-Za-z\\]\\{2\\}\\$'
+
+  postalcodes-info-postal-code-is-string:
+    description: Postal codes must be modeled as strings to preserve leading zeros, spaces and punctuation.
+    message: '"postal_code" must be modeled as a string, not a number.'
+    severity: error
+    given: $.components.schemas.PostalRecord.properties.postal_code
+    then:
+      field: type
+      function: pattern
+      functionOptions:
+        match: '^string$'
+
+  # Downloads workflow
+  postalcodes-info-download-token-headers:
+    description: The download-token endpoint must require X-Requested-With and Referer headers.
+    message: 'createDownloadToken must enforce X-Requested-With and Referer same-origin headers.'
+    severity: warn
+    given: $.paths['/download-token.php'].get.parameters
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            type: object
+            properties:
+              name:
+                enum:
+                  - X-Requested-With
+                  - Referer
+
+  postalcodes-info-download-format-enum:
+    description: The download endpoint must constrain format to csv, xlsx, json.
+    message: 'downloadCountryDataset format parameter must be enumerated as csv | xlsx | json.'
+    severity: error
+    given: $.paths['/download.php'].get.parameters[?(@.name=="format")].schema
+    then:
+      field: enum
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          items:
+            type: string
+          contains:
+            enum:
+              - csv
+              - xlsx
+              - json
+
+  # Examples discipline
+  postalcodes-info-200-has-example:
+    description: 200 responses should include at least one example to document the JSON shape.
+    message: '200 response on {{path}} should include an example.'
+    severity: info
+    given: $.paths.*.*.responses['200'].content.application/json
+    then:
+      function: truthy
+      field: examples

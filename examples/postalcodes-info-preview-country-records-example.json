@@ -1,0 +1,41 @@
+{
+  "operationId": "previewCountryRecords",
+  "method": "GET",
+  "url": "https://postalcodes.info/ajax-preview?country=spain",
+  "request": {
+    "headers": {
+      "Accept": "application/json"
+    },
+    "query": {
+      "country": "spain"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body": [
+      {
+        "country_code": "ES",
+        "postal_code": "28001",
+        "place_name": "Madrid",
+        "admin_name1": "Madrid",
+        "admin_name2": "Madrid",
+        "admin_name3": null,
+        "latitude": 40.4189,
+        "longitude": -3.6919
+      },
+      {
+        "country_code": "ES",
+        "postal_code": "08001",
+        "place_name": "Barcelona",
+        "admin_name1": "Catalunya",
+        "admin_name2": "Barcelona",
+        "admin_name3": null,
+        "latitude": 41.3825,
+        "longitude": 2.1769
+      }
+    ]
+  }
+}

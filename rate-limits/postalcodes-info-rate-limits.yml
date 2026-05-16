@@ -1,0 +1,90 @@
+apiCommonsRateLimits: '0.1'
+provider:
+  id: postalcodes-info
+  name: PostalCodes.info
+  url: https://postalcodes.info/
+  contact:
+    email: social@genera.work
+    url: https://postalcodes.info/contact
+
+reconciled: false
+reconciliationNotes: |
+  PostalCodes.info does not publish numeric rate-limit thresholds (requests
+  per second / minute / hour) or quota windows. The provider relies on
+  same-origin browser controls (Referer, X-Requested-With, CSRF-style download
+  tokens) plus robots.txt and institutional headers as the primary abuse
+  controls. Bulk users are directed to use country downloads instead of
+  repeated live queries. Capture as best-effort policy until the provider
+  publishes a numeric quota surface.
+
+scopes:
+  - id: public-search
+    description: Same-origin lookup search across countries, localities and postal codes.
+    operations: [searchPostalCodes]
+    policy:
+      type: best-effort
+      auth: none
+      limits:
+        reconciled: false
+        notes: No numeric per-IP throttle is published. Use restraint and identify your client.
+
+  - id: public-preview
+    description: Country preview JSON for UI previews.
+    operations: [previewCountryRecords]
+    policy:
+      type: best-effort
+      auth: none
+      limits:
+        maxRecordsPerResponse: 25000
+        notes: |
+          For bulk imports use the country download endpoint instead of
+          repeated preview requests.
+
+  - id: same-origin-downloads
+    description: Country dataset downloads gated by a same-origin token flow.
+    operations: [createDownloadToken, downloadCountryDataset]
+    policy:
+      type: same-origin-token
+      auth: none
+      requirements:
+        - 'Browser flow with Referer header from postalcodes.info'
+        - 'X-Requested-With: XMLHttpRequest header'
+        - 'Single-use download token from /download-token.php'
+      limits:
+        reconciled: false
+        notes: |
+          No numeric per-token, per-IP or per-day quota is published. The
+          token mechanism is intended to prevent hotlinking and unauthenticated
+          scraping rather than to meter usage.
+
+  - id: lookup-pages
+    description: Canonical HTML lookup pages.
+    operations: [getCountryLookupPage]
+    policy:
+      type: best-effort
+      auth: none
+      limits:
+        reconciled: false
+        notes: Respect robots.txt and institutional headers. Cache results.
+
+abuseControls:
+  - Same-origin Referer enforcement on download endpoints
+  - X-Requested-With XMLHttpRequest header enforcement on download endpoints
+  - Single-use download tokens minted server-side
+  - robots.txt and institutional User-Agent policies
+  - Oracle Cloud / CDN-level network protections
+
+fairUse:
+  guidance:
+    - 'Use country downloads (/download.php) for bulk imports rather than scraping /search or /ajax-preview repeatedly.'
+    - 'Cache postal-record lookups; postal codes change rarely between annual snapshots (e.g., 2026.1).'
+    - 'Identify your integration via a descriptive User-Agent header that includes a contact URL.'
+    - 'Treat postal_code values as strings to avoid downstream re-validation traffic.'
+
+references:
+  - type: Documentation
+    url: https://postalcodes.info/api
+  - type: TermsOfService
+    url: https://postalcodes.info/terms
+  - type: UpdatePolicy
+    url: https://postalcodes.info/update-policy

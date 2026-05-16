@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/postalcodes-info/main/json-schema/postalcodes-info-error-schema.json",
+  "title": "Error",
+  "description": "Minimal error envelope returned by PostalCodes.info JSON endpoints.",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "string",
+      "description": "Human-readable error message."
+    }
+  },
+  "required": ["error"],
+  "additionalProperties": false
+}

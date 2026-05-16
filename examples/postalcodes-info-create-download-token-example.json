@@ -1,0 +1,30 @@
+{
+  "operationId": "createDownloadToken",
+  "method": "GET",
+  "url": "https://postalcodes.info/download-token.php",
+  "request": {
+    "headers": {
+      "Accept": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
+      "Referer": "https://postalcodes.info/datasets"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body": {
+      "token": "8f3b9c7a2e1d4f5a6b8c0d1e2f3a4b5c"
+    }
+  },
+  "errorResponse": {
+    "status": 403,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body": {
+      "error": "Same-origin browser headers required"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+apiCommonsPlans: '0.1'
+provider:
+  id: postalcodes-info
+  name: PostalCodes.info
+  url: https://postalcodes.info/
+  contact:
+    email: social@genera.work
+    url: https://postalcodes.info/contact
+
+reconciled: false
+reconciliationNotes: |
+  PostalCodes.info does not publish a public pricing or plan surface. The site
+  explicitly states commercial reuse is permitted under the Open Database License
+  (ODbL) 1.0 with attribution and no licensing fees. There is no metered tier,
+  paid SKU, or subscription portal exposed at https://postalcodes.info/. The
+  single documented "plan" is the free, attribution-bound public access governed
+  by ODbL.
+
+plans:
+  - id: open-data-public
+    name: Open Data Public Access
+    type: free
+    audience: public
+    description: |
+      Free, attribution-required access to the PostalCodes.info search,
+      preview, country download and lookup-page endpoints under the Open
+      Database License (ODbL) 1.0.
+    price:
+      amount: 0
+      currency: USD
+      period: perpetual
+    accessUrl: https://postalcodes.info/api
+    signup: not-required
+    auth:
+      type: none
+      notes: |
+        Reads do not require an API key. Country downloads require a same-origin
+        token minted by /download-token.php which is browser-flow only.
+    license:
+      name: Open Database License (ODbL) 1.0
+      url: https://opendatacommons.org/licenses/odbl/1-0/
+      attribution: 'Contains information from the Global Postal Code Repository (postalcodes.info), available under the Open Database License (ODbL).'
+    inclusions:
+      - 123+ country corpora
+      - Locality search and autocomplete via /search
+      - Country preview (up to 25,000 records) via /ajax-preview
+      - Full country downloads in CSV, JSON, XLSX
+      - Canonical HTML lookup pages for citation
+      - Annual master snapshots (e.g., 2026.1) plus weekly minor updates
+    limits:
+      reconciled: false
+      notes: PostalCodes.info does not publish per-key or per-IP request quotas.
+
+prohibitedUses:
+  - Selling raw datasets as standalone products
+  - Automated retrieval that violates robots.txt or institutional headers
+  - Misrepresenting statistical geocoding centroids as official boundary data
+
+commercialUse:
+  permitted: true
+  notes: |
+    Commercial reuse inside e-commerce, software, logistics and research
+    products is explicitly permitted without licensing fees, provided ODbL
+    attribution is maintained and derivatives are reciprocally licensed.
+
+references:
+  - type: License
+    url: https://postalcodes.info/licensing
+  - type: TermsOfService
+    url: https://postalcodes.info/terms
+  - type: UpdatePolicy
+    url: https://postalcodes.info/update-policy
+  - type: DataSources
+    url: https://postalcodes.info/data-sources

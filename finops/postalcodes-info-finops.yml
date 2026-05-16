@@ -1,0 +1,116 @@
+finopsSpec: '0.1'
+focusVersion: '1.1'
+provider:
+  id: postalcodes-info
+  name: PostalCodes.info
+  url: https://postalcodes.info/
+  contact:
+    email: social@genera.work
+    url: https://postalcodes.info/contact
+
+reconciled: false
+reconciliationNotes: |
+  PostalCodes.info has no chargeable billing surface for consumers of the
+  reference API or country datasets. There is no metered SKU, no invoicing
+  surface, no FOCUS-aligned cost data feed, and no public commercial price
+  list to reconcile. The FinOps view below documents the indirect cost shape
+  (consumer-side compute / storage / egress costs for ingesting and caching
+  PostalCodes.info data) and the provider-side operating model, which is
+  funded outside of consumer billing.
+
+billingSurface:
+  exists: false
+  notes: |
+    The provider does not invoice consumers. Access is governed by ODbL 1.0
+    attribution. There are no chargeable SKUs to map to FOCUS columns such as
+    BilledCost, EffectiveCost, ListCost, or CommitmentDiscountStatus.
+
+focusAlignment:
+  approach: consumer-side-only
+  notes: |
+    Because there is no provider invoice, FOCUS reconciliation is only useful
+    on the consumer side, where teams may capture:
+
+      - BilledCost for storage of downloaded country corpora
+      - BilledCost for compute that ingests / normalizes the data
+      - BilledCost for CDN / egress when re-serving derivative postal data
+      - ServiceCategory: 'Data Integration'
+      - ServiceName: 'PostalCodes.info Reference Data'
+      - ProviderName: 'PostalCodes.info'
+      - PublisherName: 'PostalCodes.info'
+      - InvoiceIssuerName: <consumer's own cloud or data platform>
+      - ChargeCategory: 'Usage' (consumer-side infra), not 'Purchase'
+  focusFieldsApplicable:
+    - ProviderName
+    - PublisherName
+    - ServiceCategory
+    - ServiceName
+    - ChargeCategory
+    - ChargeDescription
+    - PricingUnit
+  focusFieldsNotApplicable:
+    - BilledCost
+    - EffectiveCost
+    - ListCost
+    - ContractedCost
+    - CommitmentDiscountStatus
+    - CommitmentDiscountType
+    - CommitmentDiscountId
+    - InvoiceIssuerName
+    - PricingCategory
+    - SkuId
+    - SkuPriceId
+
+costDrivers:
+  - id: ingest-volume
+    name: Country Dataset Ingest Volume
+    description: |
+      Storage and compute costs grow with the number of country datasets
+      ingested. Featured corpora include Portugal (~207k records), UAE (~178k),
+      India (~156k), Japan (~147k), Mexico (~145k). Plan capacity around the
+      annual master snapshot (e.g., 2026.1) plus weekly minor updates.
+    unit: country-dataset
+    direction: consumer-side
+  - id: refresh-cadence
+    name: Refresh Cadence
+    description: |
+      Annual master snapshot + weekly minor refreshes. Cost grows with how
+      aggressively the consumer re-pulls full country files versus diffing.
+    unit: refresh-event
+    direction: consumer-side
+  - id: live-lookup-volume
+    name: Live Lookup Volume
+    description: |
+      Per-request compute and egress on the consumer side when calling /search
+      and /ajax-preview from production traffic instead of caching results.
+    unit: request
+    direction: consumer-side
+  - id: egress-redistribution
+    name: Egress for Redistribution
+    description: |
+      If the consumer re-serves derivative postal data, egress and CDN costs
+      apply. ODbL attribution is required on derivatives.
+    unit: GB-egressed
+    direction: consumer-side
+
+providerOperatingModel:
+  funding: |
+    PostalCodes.info is funded by the maintainer (Pablo Cirre / PostalCodes.info)
+    and infrastructure partners. Stated infrastructure: Oracle Cloud hosting;
+    GeoNames as upstream data source. No consumer billing is in scope.
+  hostingPartner: Oracle Cloud
+  upstreamData: GeoNames
+
+recommendations:
+  - 'Cache country downloads by snapshot version (e.g., 2026.1) to avoid redundant transfer cost.'
+  - 'Prefer bulk /download.php over repeated /search calls for high-volume ingest.'
+  - 'Diff against the prior snapshot when possible; weekly minor updates are usually small.'
+  - 'Tag consumer-side cloud spend with ServiceName=PostalCodes.info Reference Data for FinOps visibility.'
+
+references:
+  - type: License
+    url: https://postalcodes.info/licensing
+  - type: UpdatePolicy
+    url: https://postalcodes.info/update-policy
+  - type: DataSources
+    url: https://postalcodes.info/data-sources

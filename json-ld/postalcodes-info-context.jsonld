@@ -1,0 +1,57 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
+    "iso": "http://standards.iso.org/iso/3166/",
+    "postalcodesinfo": "https://postalcodes.info/vocab#",
+
+    "PostalRecord": "postalcodesinfo:PostalRecord",
+    "Country": "schema:Country",
+    "PostalCode": "schema:PostalCode",
+    "AdministrativeArea": "schema:AdministrativeArea",
+    "Place": "schema:Place",
+    "Dataset": "schema:Dataset",
+
+    "country_code": {
+      "@id": "iso:countryCode",
+      "@type": "xsd:string"
+    },
+    "postal_code": {
+      "@id": "schema:postalCode",
+      "@type": "xsd:string"
+    },
+    "place_name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "admin_name1": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "admin_name2": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "admin_name3": {
+      "@id": "postalcodesinfo:admin3",
+      "@type": "xsd:string"
+    },
+    "latitude": {
+      "@id": "geo:lat",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "geo:long",
+      "@type": "xsd:decimal"
+    },
+
+    "dataset": "dcat:dataset",
+    "license": "dct:license",
+    "publisher": "dct:publisher",
+    "modified": "dct:modified",
+    "distribution": "dcat:distribution"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "../json-schema/postalcodes-info-postal-record-schema.json",
+  "samples": [
+    {
+      "country_code": "ES",
+      "postal_code": "28001",
+      "place_name": "Madrid",
+      "admin_name1": "Madrid",
+      "admin_name2": "Madrid",
+      "admin_name3": null,
+      "latitude": 40.4189,
+      "longitude": -3.6919
+    },
+    {
+      "country_code": "US",
+      "postal_code": "90210",
+      "place_name": "Beverly Hills",
+      "admin_name1": "California",
+      "admin_name2": "Los Angeles County",
+      "admin_name3": null,
+      "latitude": 34.0901,
+      "longitude": -118.4065
+    },
+    {
+      "country_code": "JP",
+      "postal_code": "100-0001",
+      "place_name": "Chiyoda Chiyodaku",
+      "admin_name1": "Tokyo",
+      "admin_name2": "Chiyoda",
+      "admin_name3": null,
+      "latitude": 35.6864,
+      "longitude": 139.7531
+    },
+    {
+      "country_code": "IN",
+      "postal_code": "110001",
+      "place_name": "New Delhi GPO",
+      "admin_name1": "Delhi",
+      "admin_name2": "New Delhi",
+      "admin_name3": null,
+      "latitude": 28.6273,
+      "longitude": 77.2167
+    },
+    {
+      "country_code": "GB",
+      "postal_code": "SW1A 1AA",
+      "place_name": "Westminster",
+      "admin_name1": "England",
+      "admin_name2": "Greater London",
+      "admin_name3": "City of Westminster",
+      "latitude": 51.5014,
+      "longitude": -0.1419
+    }
+  ]
+}

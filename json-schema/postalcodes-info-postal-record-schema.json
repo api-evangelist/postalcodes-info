@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/postalcodes-info/main/json-schema/postalcodes-info-postal-record-schema.json",
+  "title": "PostalRecord",
+  "description": "A single postal-code reference record as published by PostalCodes.info. Postal codes are always strings.",
+  "type": "object",
+  "properties": {
+    "country_code": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code.",
+      "pattern": "^[A-Z]{2}$",
+      "examples": ["ES", "US", "IN", "JP"]
+    },
+    "postal_code": {
+      "type": "string",
+      "description": "Postal identifier as text. May contain leading zeroes, spaces, letters or punctuation.",
+      "examples": ["28001", "08001", "100-0001", "AB1 0AA"]
+    },
+    "place_name": {
+      "type": "string",
+      "description": "Locality, town, or city name associated with the postal code."
+    },
+    "admin_name1": {
+      "type": ["string", "null"],
+      "description": "First-level administrative subdivision (state, region, autonomous community)."
+    },
+    "admin_name2": {
+      "type": ["string", "null"],
+      "description": "Second-level administrative subdivision (province, county)."
+    },
+    "admin_name3": {
+      "type": ["string", "null"],
+      "description": "Third-level administrative subdivision (district, municipality)."
+    },
+    "latitude": {
+      "type": ["number", "null"],
+      "description": "WGS84 locality or area centroid latitude. Not a delivery-point coordinate.",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "type": ["number", "null"],
+      "description": "WGS84 locality or area centroid longitude. Not a delivery-point coordinate.",
+      "minimum": -180,
+      "maximum": 180
+    }
+  },
+  "required": ["country_code", "postal_code", "place_name"],
+  "additionalProperties": false
+}

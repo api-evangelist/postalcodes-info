@@ -1,0 +1,50 @@
+apiVersion: naftiko.dev/v1
+kind: CapabilityComposition
+metadata:
+  name: country-dataset-export
+  title: Country Dataset Export Workflow
+  description: Mint a same-origin download token and pull a complete country postal-code dataset in CSV, JSON or XLSX.
+  tags:
+    - Postal Codes
+    - Open Data
+    - Bulk Data
+    - Logistics
+spec:
+  inputs:
+    country:
+      type: string
+      description: ISO 3166-1 alpha-2 country code.
+      pattern: ^[A-Za-z]{2}$
+    format:
+      type: string
+      enum: [csv, xlsx, json]
+      default: json
+  steps:
+    - id: token
+      capability: postalcodes-info-postal-code-reference-api/createDownloadToken
+      with:
+        headers:
+          X-Requested-With: XMLHttpRequest
+          Referer: https://postalcodes.info/datasets
+      outputs:
+        token: $.token
+
+    - id: download
+      capability: postalcodes-info-postal-code-reference-api/downloadCountryDataset
+      with:
+        country: ${inputs.country}
+        format: ${inputs.format}
+        t: ${steps.token.token}
+      outputs:
+        file: $.file
+
+    - id: persist
+      kind: io.store
+      description: Persist the country dataset locally and record the snapshot version (e.g., 2026.1).
+      with:
+        body: ${steps.download.file}
+        path: ./postalcodes-info/${inputs.country}-${snapshotVersion()}.${inputs.format}
+
+  outputs:
+    file: ${steps.download.file}
+    path: ${steps.persist.path}

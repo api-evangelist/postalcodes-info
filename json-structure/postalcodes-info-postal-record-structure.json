@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-01/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/postalcodes-info/main/json-structure/postalcodes-info-postal-record-structure.json",
+  "title": "PostalRecord",
+  "description": "Tabular postal-code reference record describing the fields exported by PostalCodes.info country downloads (CSV, XLSX, JSON).",
+  "kind": "record",
+  "primaryKey": ["country_code", "postal_code", "place_name"],
+  "fields": [
+    {
+      "name": "country_code",
+      "type": "string",
+      "constraint": {"pattern": "^[A-Z]{2}$"},
+      "description": "ISO 3166-1 alpha-2 country code. Always uppercase in exports."
+    },
+    {
+      "name": "postal_code",
+      "type": "string",
+      "description": "Text postal identifier. Always treat as string; leading zeros and punctuation are meaningful."
+    },
+    {
+      "name": "place_name",
+      "type": "string",
+      "description": "Locality / city / town associated with this code."
+    },
+    {
+      "name": "admin_name1",
+      "type": "string?",
+      "description": "First-level admin area (state, region, autonomous community)."
+    },
+    {
+      "name": "admin_name2",
+      "type": "string?",
+      "description": "Second-level admin area (province, county)."
+    },
+    {
+      "name": "admin_name3",
+      "type": "string?",
+      "description": "Third-level admin area (district, municipality)."
+    },
+    {
+      "name": "latitude",
+      "type": "number?",
+      "unit": "degrees",
+      "datum": "WGS84",
+      "description": "Locality centroid latitude. Not a delivery-point coordinate."
+    },
+    {
+      "name": "longitude",
+      "type": "number?",
+      "unit": "degrees",
+      "datum": "WGS84",
+      "description": "Locality centroid longitude. Not a delivery-point coordinate."
+    }
+  ],
+  "examples": [
+    {
+      "country_code": "ES",
+      "postal_code": "28001",
+      "place_name": "Madrid",
+      "admin_name1": "Madrid",
+      "admin_name2": "Madrid",
+      "admin_name3": null,
+      "latitude": 40.4189,
+      "longitude": -3.6919
+    }
+  ]
+}

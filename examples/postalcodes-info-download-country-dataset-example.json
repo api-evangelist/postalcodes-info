@@ -1,0 +1,41 @@
+{
+  "operationId": "downloadCountryDataset",
+  "method": "GET",
+  "url": "https://postalcodes.info/download.php?country=es&format=json&t=8f3b9c7a2e1d4f5a6b8c0d1e2f3a4b5c",
+  "request": {
+    "headers": {
+      "Accept": "application/json"
+    },
+    "query": {
+      "country": "es",
+      "format": "json",
+      "t": "8f3b9c7a2e1d4f5a6b8c0d1e2f3a4b5c"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Disposition": "attachment; filename=\"postalcodes-info-es-2026.1.json\""
+    },
+    "body": [
+      {
+        "country_code": "ES",
+        "postal_code": "28001",
+        "place_name": "Madrid",
+        "admin_name1": "Madrid",
+        "admin_name2": "Madrid",
+        "admin_name3": null,
+        "latitude": 40.4189,
+        "longitude": -3.6919
+      }
+    ]
+  },
+  "errorResponse": {
+    "status": 403,
+    "body": {
+      "error": "Invalid or missing token"
+    }
+  },
+  "notes": "Store postal codes as text. Leading zeros, spaces, letters and punctuation are valid. Available formats: csv, xlsx, json."
+}

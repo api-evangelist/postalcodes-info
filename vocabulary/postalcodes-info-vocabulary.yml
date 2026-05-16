@@ -1,0 +1,126 @@
+name: postalcodes-info-vocabulary
+title: PostalCodes.info Vocabulary
+description: Operational and capability vocabulary for the PostalCodes.info reference API and its country corpora.
+version: '2026-05-05'
+provider: postalcodes-info
+
+domains:
+  - id: postal-codes
+    label: Postal Codes
+    description: Country-bound postal identifiers stored as text. Coverage and granularity vary by country.
+    terms:
+      - id: postal_code
+        label: Postal Code
+        definition: A national postal identifier represented as a string to preserve leading zeros, spaces, and punctuation.
+        examples: ['28001', '90210', '100-0001', 'SW1A 1AA', 'AB1 0AA']
+      - id: country_code
+        label: Country Code
+        definition: ISO 3166-1 alpha-2 country identifier.
+        examples: ['ES', 'US', 'IN', 'JP', 'GB']
+      - id: country_slug
+        label: Country Slug
+        definition: Lowercase URL-safe country identifier used by canonical lookup pages.
+        examples: ['spain', 'united-states', 'india', 'japan', 'united-kingdom']
+
+  - id: geocoding
+    label: Geocoding
+    description: WGS84 locality centroids associated with each postal record. Not delivery-grade coordinates.
+    terms:
+      - id: latitude
+        label: Latitude
+        definition: Locality centroid latitude in WGS84 decimal degrees.
+        unit: degrees
+        datum: WGS84
+      - id: longitude
+        label: Longitude
+        definition: Locality centroid longitude in WGS84 decimal degrees.
+        unit: degrees
+        datum: WGS84
+      - id: locality_centroid
+        label: Locality Centroid
+        definition: Approximate centroid for the postal code's primary locality. Not a delivery-point coordinate.
+
+  - id: administrative-hierarchy
+    label: Administrative Hierarchy
+    description: Country-specific administrative subdivisions enriching each record.
+    terms:
+      - id: admin_name1
+        label: First-Level Admin
+        definition: State, region, autonomous community, or top-level province.
+      - id: admin_name2
+        label: Second-Level Admin
+        definition: Province, county, or sub-region.
+      - id: admin_name3
+        label: Third-Level Admin
+        definition: District, municipality, or local subdivision.
+
+  - id: datasets
+    label: Datasets and Exports
+    description: Bulk country datasets distributed in CSV, XLSX, and JSON formats.
+    terms:
+      - id: country_dataset
+        label: Country Dataset
+        definition: Full per-country export of postal records.
+      - id: snapshot_version
+        label: Snapshot Version
+        definition: Annual master snapshot identifier (e.g., 2026.1).
+      - id: export_format
+        label: Export Format
+        definition: One of csv, xlsx, json.
+        enum: [csv, xlsx, json]
+      - id: download_token
+        label: Download Token
+        definition: Same-origin, short-lived token returned by /download-token.php and consumed by /download.php.
+
+  - id: lookup-workflows
+    label: Lookup Workflows
+    description: Same-origin endpoints powering autocomplete, preview, and canonical reference pages.
+    terms:
+      - id: search_suggestion
+        label: Search Suggestion
+        definition: Lightweight autocomplete record returned by /search.
+      - id: lookup_page
+        label: Lookup Page
+        definition: Canonical HTML page for a country, locality, or code (for citation and manual review).
+      - id: country_preview
+        label: Country Preview
+        definition: Up to 25,000 records returned by /ajax-preview for UI previews.
+
+  - id: governance
+    label: Governance and Licensing
+    description: Provenance, attribution, and licensing for redistribution and derivative use.
+    terms:
+      - id: odbl_1_0
+        label: Open Database License 1.0
+        definition: Primary distribution license. Requires attribution and share-alike for derivatives.
+        url: https://opendatacommons.org/licenses/odbl/1-0/
+      - id: attribution_clause
+        label: Attribution Clause
+        definition: 'Contains information from the Global Postal Code Repository (postalcodes.info), available under the Open Database License (ODbL).'
+      - id: data_source
+        label: Data Source
+        definition: Upstream provider (GeoNames, national open-data portals, postal authorities).
+
+capabilities:
+  - id: search
+    label: Search
+    operations: [searchPostalCodes]
+  - id: preview
+    label: Preview
+    operations: [previewCountryRecords]
+  - id: downloads
+    label: Downloads
+    operations: [createDownloadToken, downloadCountryDataset]
+  - id: lookup-pages
+    label: Lookup Pages
+    operations: [getCountryLookupPage]
+
+mappings:
+  schemaOrg:
+    postal_code: schema:postalCode
+    place_name: schema:name
+    admin_name1: schema:addressRegion
+    admin_name2: schema:addressLocality
+    country_code: schema:addressCountry
+    latitude: schema:GeoCoordinates.latitude
+    longitude: schema:GeoCoordinates.longitude

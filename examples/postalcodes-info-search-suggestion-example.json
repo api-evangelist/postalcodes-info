@@ -1,0 +1,23 @@
+{
+  "schema": "../json-schema/postalcodes-info-search-suggestion-schema.json",
+  "samples": [
+    {
+      "type": "Country",
+      "text": "Spain",
+      "sub": "ES",
+      "url": "/postal-codes/spain"
+    },
+    {
+      "type": "Town/City",
+      "text": "Madrid",
+      "sub": "Spain",
+      "url": "/postal-codes/spain/madrid"
+    },
+    {
+      "type": "Postal Code",
+      "text": "90210 (Beverly Hills)",
+      "sub": "United States",
+      "url": "/postal-codes/united-states/code/90210"
+    }
+  ]
+}

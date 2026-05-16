@@ -1,0 +1,21 @@
+{
+  "operationId": "getCountryLookupPage",
+  "method": "GET",
+  "url": "https://postalcodes.info/postal-codes/spain",
+  "request": {
+    "headers": {
+      "Accept": "text/html"
+    },
+    "path": {
+      "country": "spain"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/html; charset=utf-8"
+    },
+    "body": "<!doctype html><html><head><title>Spain Postal Codes | PostalCodes.info</title></head><body><h1>Spain</h1>... (canonical HTML page with hierarchy, locality and code references) ...</body></html>"
+  },
+  "notes": "Lookup pages are HTML. Useful for manual review and citation; not intended for machine parsing. Use /search and /ajax-preview for JSON access."
+}

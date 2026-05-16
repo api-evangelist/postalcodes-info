@@ -1,0 +1,50 @@
+apiVersion: naftiko.dev/v1
+kind: CapabilityComposition
+metadata:
+  name: postal-data-lookup
+  title: Postal Data Lookup Workflow
+  description: Address autocomplete, locality validation, and bulk country corpora retrieval for checkout, CRM and logistics use cases.
+  tags:
+    - Postal Codes
+    - Geocoding
+    - Address Validation
+    - Logistics
+spec:
+  inputs:
+    query:
+      type: string
+      description: User-entered locality, postal code or country fragment.
+    country:
+      type: string
+      description: Optional ISO 3166-1 alpha-2 country code to narrow lookup.
+  steps:
+    - id: suggest
+      capability: postalcodes-info-postal-code-reference-api/searchPostalCodes
+      with:
+        q: ${inputs.query}
+        country: ${inputs.country}
+      outputs:
+        suggestions: $.suggestions
+
+    - id: preview
+      capability: postalcodes-info-postal-code-reference-api/previewCountryRecords
+      when: ${inputs.country != null}
+      with:
+        country: ${slug(inputs.country)}
+      outputs:
+        sample: $.records
+
+    - id: validate
+      kind: transform
+      description: Filter sample records by the suggested postal code or locality.
+      with:
+        records: ${steps.preview.sample}
+        match:
+          postal_code: ${first(steps.suggest.suggestions).text}
+      outputs:
+        validated: $.records
+
+  outputs:
+    suggestions: ${steps.suggest.suggestions}
+    sample: ${steps.preview.sample}
+    validated: ${steps.validate.validated}
