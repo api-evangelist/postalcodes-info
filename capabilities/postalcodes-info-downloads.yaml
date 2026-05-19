@@ -1,0 +1,138 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PostalCodes.info Postal Code Reference API — Downloads
+  description: 'PostalCodes.info Postal Code Reference API — Downloads. 2 operations. Lead operation: Mint a Same-Origin Download
+    Token. Self-contained Naftiko capability covering one Postalcodes Info business surface.'
+  tags:
+  - Postalcodes Info
+  - Downloads
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTALCODES_INFO_API_KEY: POSTALCODES_INFO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: postalcodes-info-downloads
+    baseUri: https://postalcodes.info
+    description: PostalCodes.info Postal Code Reference API — Downloads business capability. Self-contained, no shared references.
+    resources:
+    - name: download-token.php
+      path: /download-token.php
+      operations:
+      - name: createdownloadtoken
+        method: GET
+        description: Mint a Same-Origin Download Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Requested-With
+          in: header
+          type: string
+          required: true
+        - name: Referer
+          in: header
+          type: string
+          required: true
+    - name: download.php
+      path: /download.php
+      operations:
+      - name: downloadcountrydataset
+        method: GET
+        description: Download a Country Dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+          required: true
+        - name: format
+          in: query
+          type: string
+          description: Export format.
+          required: true
+        - name: t
+          in: query
+          type: string
+          description: Download token from /download-token.php.
+          required: true
+  exposes:
+  - type: rest
+    namespace: postalcodes-info-downloads-rest
+    port: 8080
+    description: REST adapter for PostalCodes.info Postal Code Reference API — Downloads. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/download-token-php
+      name: download-token-php
+      description: REST surface for download-token.php.
+      operations:
+      - method: GET
+        name: createdownloadtoken
+        description: Mint a Same-Origin Download Token
+        call: postalcodes-info-downloads.createdownloadtoken
+        with:
+          X-Requested-With: rest.X-Requested-With
+          Referer: rest.Referer
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/download-php
+      name: download-php
+      description: REST surface for download.php.
+      operations:
+      - method: GET
+        name: downloadcountrydataset
+        description: Download a Country Dataset
+        call: postalcodes-info-downloads.downloadcountrydataset
+        with:
+          country: rest.country
+          format: rest.format
+          t: rest.t
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: postalcodes-info-downloads-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PostalCodes.info Postal Code Reference API — Downloads. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: mint-same-origin-download-token
+      description: Mint a Same-Origin Download Token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postalcodes-info-downloads.createdownloadtoken
+      with:
+        X-Requested-With: tools.X-Requested-With
+        Referer: tools.Referer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: download-country-dataset
+      description: Download a Country Dataset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postalcodes-info-downloads.downloadcountrydataset
+      with:
+        country: tools.country
+        format: tools.format
+        t: tools.t
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -3,218 +3,220 @@ url: https://raw.githubusercontent.com/api-evangelist/postalcodes-info/refs/head
 name: PostalCodes.info
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-description: Postal-code lookup, search, country exports, and address validation worldwide. PostalCodes.info publishes a same-origin reference API and bulk CSV / JSON / XLSX downloads for 123+ countries, anchored on GeoNames and national open-data feeds, released under the Open Database License (ODbL) 1.0.
+description: Postal-code lookup, search, country exports, and address validation worldwide. PostalCodes.info publishes a same-origin
+  reference API and bulk CSV / JSON / XLSX downloads for 123+ countries, anchored on GeoNames and national open-data feeds,
+  released under the Open Database License (ODbL) 1.0.
 created: '2026-05-16'
-modified: '2026-05-16'
+modified: '2026-05-19'
 specificationVersion: '0.20'
 tags:
+- Postal Codes
+- Geocoding
+- Open Data
+- Address Validation
+- Logistics
+common:
+- url: https://postalcodes.info/
+  type: Website
+- url: https://postalcodes.info/api
+  type: Documentation
+- url: https://postalcodes.info/datasets
+  type: Dataset Documentation
+- url: https://postalcodes.info/openapi.json
+  type: OpenAPI
+- url: https://postalcodes.info/licensing
+  type: License
+- url: https://opendatacommons.org/licenses/odbl/1-0/
+  type: License
+- url: https://postalcodes.info/terms
+  type: TermsOfService
+- url: https://postalcodes.info/privacy
+  type: PrivacyPolicy
+- url: https://postalcodes.info/contact
+  type: Contact
+- url: https://postalcodes.info/data-sources
+  type: DataSources
+- url: https://postalcodes.info/update-policy
+  type: UpdatePolicy
+- url: https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json
+  type: APIsJSON
+- url: https://github.com/PabloCirre/postalcodes-info-open-data
+  type: GitHub
+- url: https://zenodo.org/records/19493709
+  type: Citation
+- url: https://zenodo.org/records/19930578
+  type: MethodologyNote
+- url: https://zenodo.org/records/19930688
+  type: CoverageBenchmark
+url-source: https://postalcodes.info/
+maintainers:
+- FN: Pablo Cirre, PostalCodes.info
+  url: https://postalcodes.info/contact
+  email: social@genera.work
+  x-organization: PostalCodes.info (Global Postal Code Repository)
+apis:
+- aid: postalcodes-info:postal-code-reference-api
+  name: PostalCodes.info Postal Code Reference API
+  description: Same-origin postal-code search, country export, and lookup-page endpoints used by the public PostalCodes.info
+    UI. Coverage spans 123+ countries with approximately 1.83M postal records and 99.2% geocoding coverage on locality centroids.
+    Designed for lookup, testing, education, geospatial examples, and data-quality workflows. Not a delivery-grade postal
+    authority API.
+  humanURL: https://postalcodes.info/api
+  baseURL: https://postalcodes.info
+  image: https://postalcodes.info/assets/images/og-main.png
+  version: '2026-05-05'
+  tags:
   - Postal Codes
   - Geocoding
   - Open Data
   - Address Validation
   - Logistics
-
-common:
-  - url: https://postalcodes.info/
-    type: Website
-  - url: https://postalcodes.info/api
-    type: Documentation
-  - url: https://postalcodes.info/datasets
-    type: Dataset Documentation
-  - url: https://postalcodes.info/openapi.json
-    type: OpenAPI
-  - url: https://postalcodes.info/licensing
-    type: License
-  - url: https://opendatacommons.org/licenses/odbl/1-0/
-    type: License
-  - url: https://postalcodes.info/terms
-    type: TermsOfService
-  - url: https://postalcodes.info/privacy
-    type: PrivacyPolicy
-  - url: https://postalcodes.info/contact
-    type: Contact
-  - url: https://postalcodes.info/data-sources
-    type: DataSources
-  - url: https://postalcodes.info/update-policy
-    type: UpdatePolicy
-  - url: https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json
-    type: APIsJSON
-  - url: https://github.com/PabloCirre/postalcodes-info-open-data
-    type: GitHub
-  - url: https://zenodo.org/records/19493709
-    type: Citation
-  - url: https://zenodo.org/records/19930578
-    type: MethodologyNote
-  - url: https://zenodo.org/records/19930688
-    type: CoverageBenchmark
-
-url-source: https://postalcodes.info/
-
-maintainers:
-  - FN: Pablo Cirre, PostalCodes.info
-    url: https://postalcodes.info/contact
-    email: social@genera.work
-    x-organization: PostalCodes.info (Global Postal Code Repository)
-
-apis:
-  - aid: postalcodes-info:postal-code-reference-api
-    name: PostalCodes.info Postal Code Reference API
-    description: Same-origin postal-code search, country export, and lookup-page endpoints used by the public PostalCodes.info UI. Coverage spans 123+ countries with approximately 1.83M postal records and 99.2% geocoding coverage on locality centroids. Designed for lookup, testing, education, geospatial examples, and data-quality workflows. Not a delivery-grade postal authority API.
-    humanURL: https://postalcodes.info/api
-    baseURL: https://postalcodes.info
-    image: https://postalcodes.info/assets/images/og-main.png
-    version: '2026-05-05'
-    tags:
-      - Postal Codes
-      - Geocoding
-      - Open Data
-      - Address Validation
-      - Logistics
-    properties:
-      - type: Documentation
-        url: https://postalcodes.info/api
-      - type: OpenAPI
-        url: https://postalcodes.info/openapi.json
-      - type: OpenAPI
-        url: openapi/postalcodes-info-openapi.yml
-      - type: Dataset Documentation
-        url: https://postalcodes.info/datasets
-      - type: License
-        url: https://opendatacommons.org/licenses/odbl/1-0/
-      - type: License
-        url: https://postalcodes.info/licensing
-      - type: TermsOfService
-        url: https://postalcodes.info/terms
-      - type: PrivacyPolicy
-        url: https://postalcodes.info/privacy
-      - type: UpdatePolicy
-        url: https://postalcodes.info/update-policy
-      - type: DataSources
-        url: https://postalcodes.info/data-sources
-      - type: Citation
-        url: https://zenodo.org/records/19493709
-      - type: APIsJSON
-        url: https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json
-      - type: GitHub
-        url: https://github.com/PabloCirre/postalcodes-info-open-data
-      - type: SpectralRules
-        url: rules/postalcodes-info-rules.yml
-      - type: NaftikoCapabilities
-        url: capabilities/postal-data-lookup.yaml
-      - type: NaftikoCapabilities
-        url: capabilities/country-dataset-export.yaml
-      - type: NaftikoCapabilities
-        url: capabilities/shared/postalcodes-info-postal-code-reference-api.yaml
-      - type: Plans
-        url: plans/postalcodes-info-plans-pricing.yml
-      - type: RateLimits
-        url: rate-limits/postalcodes-info-rate-limits.yml
-      - type: FinOps
-        url: finops/postalcodes-info-finops.yml
-      - type: Vocabulary
-        url: vocabulary/postalcodes-info-vocabulary.yml
-      - type: JSONLD
-        url: json-ld/postalcodes-info-context.jsonld
-      - type: JSONSchema
-        url: json-schema/postalcodes-info-postal-record-schema.json
-      - type: JSONSchema
-        url: json-schema/postalcodes-info-search-suggestion-schema.json
-      - type: JSONSchema
-        url: json-schema/postalcodes-info-error-schema.json
-      - type: JSONStructure
-        url: json-structure/postalcodes-info-postal-record-structure.json
-      - type: Example
-        url: examples/postalcodes-info-search-postal-codes-example.json
-      - type: Example
-        url: examples/postalcodes-info-preview-country-records-example.json
-      - type: Example
-        url: examples/postalcodes-info-create-download-token-example.json
-      - type: Example
-        url: examples/postalcodes-info-download-country-dataset-example.json
-      - type: Example
-        url: examples/postalcodes-info-get-country-lookup-page-example.json
-      - type: Example
-        url: examples/postalcodes-info-postal-record-example.json
-      - type: Example
-        url: examples/postalcodes-info-search-suggestion-example.json
-    contact:
-      - FN: Pablo Cirre, PostalCodes.info
-        email: social@genera.work
-        url: https://postalcodes.info/contact
-    overlays: []
-    aka:
-      - Postal Codes Info API
-      - Global Postal Code Repository API
-
-features:
-  - Same-origin lookup search across countries, localities and postal codes
-  - Country preview endpoint returning up to 25,000 records for UI previews
-  - Bulk country dataset exports in CSV, JSON, and XLSX formats
-  - Token-gated downloads to prevent hotlinking and abusive scraping
-  - 123+ country coverage with 1.83M postal records and 99.2% geocoding rate
-  - WGS84 latitude/longitude on locality centroids (where coverage exists)
-  - Postal codes preserved as strings to retain leading zeros, spaces, and punctuation
-  - Annual master snapshot (e.g., 2026.1) plus weekly minor refreshes
-  - Open Database License (ODbL) 1.0 licensing for redistribution and derivatives
-  - Public OpenAPI 3.1 specification at /openapi.json
-
-use-cases:
-  - Address-form autocomplete and validation in e-commerce checkouts
-  - Postal-code prefix and range lookup for logistics zone normalization
-  - Geocoding centroids for shipping rate previews and store locator UIs
-  - Data-quality checks and entity reconciliation in master data pipelines
-  - Locality and administrative-hierarchy enrichment for CRM and CDP records
-  - Country onboarding for SaaS apps that need bundled postal references
-  - Research, education, and benchmarking against open postal corpora
-  - Citation-grade postal corpora for academic and methodology publications
-
-integrations:
-  - name: GeoNames
-    url: https://www.geonames.org/
-    description: Upstream provider of place, administrative hierarchy and WGS84 coordinate fields underpinning most country corpora.
-  - name: Saudi Post (SPL)
-    url: https://splonline.com.sa/
-    description: Open-data workbooks contributing Saudi Arabia branch postal-code material.
-  - name: Kazakhstan National Open-Government Postal Index
-    url: https://data.egov.kz/
-    description: Open-data postal reference for Kazakhstan.
-  - name: Oracle Cloud
-    url: https://www.oracle.com/cloud/
-    description: Hosting and CDN infrastructure for postalcodes.info.
-  - name: Zenodo
-    url: https://zenodo.org/
-    description: Persistent DOI for dataset snapshots, methodology and coverage benchmarks.
-
-solutions:
-  - name: E-Commerce Address Validation
-    description: Drop-in postal lookup and locality suggestion to clean cart addresses and reduce shipping rejections.
-    tags:
-      - E-Commerce
-      - Address Validation
-  - name: Logistics Zone Normalization
-    description: Country dataset exports to drive carrier zone, postal-prefix and routing tables in fulfillment systems.
-    tags:
-      - Logistics
-      - Geocoding
-  - name: Master Data Quality
-    description: Reference corpora for entity reconciliation and locality enrichment across CRM, CDP and ERP systems.
-    tags:
-      - Data Quality
-      - Master Data Management
-  - name: Open Research Reference
-    description: Citation-grade postal data with Zenodo DOIs supporting reproducible methodology and coverage benchmarks.
-    tags:
-      - Open Data
-      - Research
-
-include: []
-
-x-common:
-  - type: Vocabulary
-    url: vocabulary/postalcodes-info-vocabulary.yml
+  properties:
+  - type: Documentation
+    url: https://postalcodes.info/api
+  - type: OpenAPI
+    url: https://postalcodes.info/openapi.json
+  - type: OpenAPI
+    url: openapi/postalcodes-info-openapi.yml
+  - type: Dataset Documentation
+    url: https://postalcodes.info/datasets
+  - type: License
+    url: https://opendatacommons.org/licenses/odbl/1-0/
+  - type: License
+    url: https://postalcodes.info/licensing
+  - type: TermsOfService
+    url: https://postalcodes.info/terms
+  - type: PrivacyPolicy
+    url: https://postalcodes.info/privacy
+  - type: UpdatePolicy
+    url: https://postalcodes.info/update-policy
+  - type: DataSources
+    url: https://postalcodes.info/data-sources
+  - type: Citation
+    url: https://zenodo.org/records/19493709
+  - type: APIsJSON
+    url: https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json
+  - type: GitHub
+    url: https://github.com/PabloCirre/postalcodes-info-open-data
+  - type: SpectralRules
+    url: rules/postalcodes-info-rules.yml
+  - type: NaftikoCapabilities
+    url: capabilities/postal-data-lookup.yaml
+  - type: NaftikoCapabilities
+    url: capabilities/country-dataset-export.yaml
+  - type: NaftikoCapabilities
+    url: capabilities/shared/postalcodes-info-postal-code-reference-api.yaml
   - type: Plans
     url: plans/postalcodes-info-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/postalcodes-info-rate-limits.yml
   - type: FinOps
     url: finops/postalcodes-info-finops.yml
+  - type: Vocabulary
+    url: vocabulary/postalcodes-info-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/postalcodes-info-context.jsonld
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-postal-record-schema.json
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-search-suggestion-schema.json
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-error-schema.json
+  - type: JSONStructure
+    url: json-structure/postalcodes-info-postal-record-structure.json
+  - type: Example
+    url: examples/postalcodes-info-search-postal-codes-example.json
+  - type: Example
+    url: examples/postalcodes-info-preview-country-records-example.json
+  - type: Example
+    url: examples/postalcodes-info-create-download-token-example.json
+  - type: Example
+    url: examples/postalcodes-info-download-country-dataset-example.json
+  - type: Example
+    url: examples/postalcodes-info-get-country-lookup-page-example.json
+  - type: Example
+    url: examples/postalcodes-info-postal-record-example.json
+  - type: Example
+    url: examples/postalcodes-info-search-suggestion-example.json
+  - type: NaftikoCapability
+    url: capabilities/postalcodes-info-downloads.yaml
+  - type: NaftikoCapability
+    url: capabilities/postalcodes-info-lookup-pages.yaml
+  - type: NaftikoCapability
+    url: capabilities/postalcodes-info-search.yaml
+  contact:
+  - FN: Pablo Cirre, PostalCodes.info
+    email: social@genera.work
+    url: https://postalcodes.info/contact
+  overlays: []
+  aka:
+  - Postal Codes Info API
+  - Global Postal Code Repository API
+features:
+- Same-origin lookup search across countries, localities and postal codes
+- Country preview endpoint returning up to 25,000 records for UI previews
+- Bulk country dataset exports in CSV, JSON, and XLSX formats
+- Token-gated downloads to prevent hotlinking and abusive scraping
+- 123+ country coverage with 1.83M postal records and 99.2% geocoding rate
+- WGS84 latitude/longitude on locality centroids (where coverage exists)
+- Postal codes preserved as strings to retain leading zeros, spaces, and punctuation
+- Annual master snapshot (e.g., 2026.1) plus weekly minor refreshes
+- Open Database License (ODbL) 1.0 licensing for redistribution and derivatives
+- Public OpenAPI 3.1 specification at /openapi.json
+use-cases:
+- Address-form autocomplete and validation in e-commerce checkouts
+- Postal-code prefix and range lookup for logistics zone normalization
+- Geocoding centroids for shipping rate previews and store locator UIs
+- Data-quality checks and entity reconciliation in master data pipelines
+- Locality and administrative-hierarchy enrichment for CRM and CDP records
+- Country onboarding for SaaS apps that need bundled postal references
+- Research, education, and benchmarking against open postal corpora
+- Citation-grade postal corpora for academic and methodology publications
+integrations:
+- name: GeoNames
+  url: https://www.geonames.org/
+  description: Upstream provider of place, administrative hierarchy and WGS84 coordinate fields underpinning most country
+    corpora.
+- name: Saudi Post (SPL)
+  url: https://splonline.com.sa/
+  description: Open-data workbooks contributing Saudi Arabia branch postal-code material.
+- name: Kazakhstan National Open-Government Postal Index
+  url: https://data.egov.kz/
+  description: Open-data postal reference for Kazakhstan.
+- name: Oracle Cloud
+  url: https://www.oracle.com/cloud/
+  description: Hosting and CDN infrastructure for postalcodes.info.
+- name: Zenodo
+  url: https://zenodo.org/
+  description: Persistent DOI for dataset snapshots, methodology and coverage benchmarks.
+solutions:
+- name: E-Commerce Address Validation
+  description: Drop-in postal lookup and locality suggestion to clean cart addresses and reduce shipping rejections.
+  tags:
+  - E-Commerce
+  - Address Validation
+- name: Logistics Zone Normalization
+  description: Country dataset exports to drive carrier zone, postal-prefix and routing tables in fulfillment systems.
+  tags:
+  - Logistics
+  - Geocoding
+- name: Master Data Quality
+  description: Reference corpora for entity reconciliation and locality enrichment across CRM, CDP and ERP systems.
+  tags:
+  - Data Quality
+  - Master Data Management
+- name: Open Research Reference
+  description: Citation-grade postal data with Zenodo DOIs supporting reproducible methodology and coverage benchmarks.
+  tags:
+  - Open Data
+  - Research
+include: []
+x-common:
+- type: Vocabulary
+  url: vocabulary/postalcodes-info-vocabulary.yml
+- type: Plans
+  url: plans/postalcodes-info-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/postalcodes-info-rate-limits.yml
+- type: FinOps
+  url: finops/postalcodes-info-finops.yml
