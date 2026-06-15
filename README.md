@@ -1,81 +1,99 @@
-# PostalCodes.info
+# PostalCodes.info (postalcodes-info)
 
 Postal-code lookup, search, country exports, and address validation worldwide. PostalCodes.info publishes a same-origin reference API and bulk CSV / JSON / XLSX downloads for 123+ countries, anchored on GeoNames and national open-data feeds, released under the Open Database License (ODbL) 1.0.
 
-- **Provider:** PostalCodes.info (Global Postal Code Repository)
-- **Maintainer:** Pablo Cirre — `social@genera.work`
-- **Homepage:** https://postalcodes.info/
-- **API documentation:** https://postalcodes.info/api
-- **Dataset documentation:** https://postalcodes.info/datasets
-- **OpenAPI (live):** https://postalcodes.info/openapi.json
-- **License:** [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/)
-- **Source apis.json:** https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json
-- **Upstream repo:** https://github.com/PabloCirre/postalcodes-info-open-data
-- **api-search issue:** [api-search/network#22](https://github.com/api-search/network/issues/22)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/postalcodes-info/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/postalcodes-info/refs/heads/main/apis.yml)
 
-## Coverage
+## Scope
 
-- 123+ countries and territories
-- ~1,827,156 postal records (~1,080,895 distinct postal codes; ~888k mapped localities)
-- ~99.2% geocoding coverage (WGS84 locality centroids, not delivery-point coordinates)
-- Annual master snapshot (e.g., `2026.1`) plus weekly minor refreshes; corrections within 48–72 business hours after verification
+- **Type:** Index
 
-## API Surface
+## Tags
 
-Canonical host: `https://postalcodes.info`
+- Postal Codes
+- Geocoding
+- Open Data
+- Address Validation
+- Logistics
 
-| Operation | Method | Path | Tag |
-|---|---|---|---|
-| Search Postal Codes, Places or Countries | GET | `/search` | Search |
-| Preview Records for One Country | GET | `/ajax-preview` | Search |
-| Mint a Same-Origin Download Token | GET | `/download-token.php` | Downloads |
-| Download a Country Dataset | GET | `/download.php` | Downloads |
-| Open a Country Postal-Code Reference Page | GET | `/postal-codes/{country}` | Lookup Pages |
+## Timestamps
 
-Reads are public and unauthenticated. Country downloads require a short-lived same-origin token (browser flow with `Referer` and `X-Requested-With: XMLHttpRequest`).
+- **Created:** 2026-05-16
+- **Modified:** 2026-05-19
 
-## Profiling Artifacts
+## APIs
 
-This repository is the API Evangelist Network profile of PostalCodes.info. Generated artifacts live alongside the `apis.yml` index.
+### PostalCodes.info Postal Code Reference API
 
-| Folder | Contents |
-|---|---|
-| `openapi/` | OpenAPI 3.1 spec sourced from `https://postalcodes.info/openapi.json` and saved as YAML |
-| `capabilities/` | Naftiko per-API capability plus `postal-data-lookup` and `country-dataset-export` workflow compositions |
-| `rules/` | Spectral ruleset enforcing PostalCodes.info conventions (postal codes as strings, ODbL license, same-origin download flow, sanctioned tags) |
-| `json-schema/` | JSON Schemas for `PostalRecord`, `SearchSuggestion`, and `Error` |
-| `json-structure/` | Tabular `PostalRecord` structure for CSV / XLSX / JSON exports |
-| `json-ld/` | JSON-LD context mapping records to schema.org, WGS84 geo, ISO country codes, and DCAT |
-| `examples/` | Per-operation request/response pairs and entity-level samples |
-| `vocabulary/` | Operational and capability vocabulary across postal codes, geocoding, admin hierarchy, datasets, lookups, and governance |
-| `plans/` | API Commons Plans 0.1 document (`reconciled: false` — ODbL public access; no paid tier) |
-| `rate-limits/` | API Commons Rate Limits 0.1 document (`reconciled: false` — no numeric quota published; same-origin token controls described) |
-| `finops/` | FinOps / FOCUS-aligned consumer-side cost view (no provider billing surface exists) |
+Same-origin postal-code search, country export, and lookup-page endpoints used by the public PostalCodes.info UI. Coverage spans 123+ countries with approximately 1.83M postal records and 99.2% geocoding coverage on locality centroids. Designed for lookup, testing, education, geospatial examples, and data-quality workflows. Not a delivery-grade postal authority API.
 
-## Use Cases
+- **Human URL:** [https://postalcodes.info/api](https://postalcodes.info/api)
+- **Base URL:** `https://postalcodes.info`
 
-- E-commerce address validation and autocomplete
-- Logistics zone normalization and carrier routing tables
-- Master data quality and locality enrichment in CRM / CDP / ERP
-- Citation-grade postal corpora for research and benchmarking (Zenodo DOIs available)
+#### Tags
 
-## Licensing & Attribution
+- Postal Codes
+- Geocoding
+- Open Data
+- Address Validation
+- Logistics
 
-Data is distributed under the **Open Database License (ODbL) 1.0**. Commercial reuse is permitted with attribution and reciprocal licensing of derivatives. Suggested attribution:
+#### Properties
 
-> Contains information from the Global Postal Code Repository (postalcodes.info), available under the Open Database License (ODbL).
+- [Documentation](https://postalcodes.info/api)
+- [OpenAPI](https://postalcodes.info/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [OpenAPI](openapi/postalcodes-info-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/postalcodes-info.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/postalcodes-info.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Dataset  Documentation](https://postalcodes.info/datasets)
+- [License](https://opendatacommons.org/licenses/odbl/1-0/)
+- [License](https://postalcodes.info/licensing)
+- [Terms of Service](https://postalcodes.info/terms)
+- [Privacy Policy](https://postalcodes.info/privacy)
+- [Update Policy](https://postalcodes.info/update-policy)
+- [Data Sources](https://postalcodes.info/data-sources)
+- [Citation](https://zenodo.org/records/19493709)
+- [A P Is J S O N](https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json)
+- [Git Hub](https://github.com/PabloCirre/postalcodes-info-open-data)
+- [Spectral Rules](rules/postalcodes-info-rules.yml)
+- [Plans](plans/postalcodes-info-plans-pricing.yml)
+- [Rate Limits](rate-limits/postalcodes-info-rate-limits.yml)
+- [Fin Ops](finops/postalcodes-info-finops.yml)
+- [Vocabulary](vocabulary/postalcodes-info-vocabulary.yml)
+- [JSON-LD](json-ld/postalcodes-info-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [JSON Schema](json-schema/postalcodes-info-postal-record-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/postalcodes-info-search-suggestion-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/postalcodes-info-error-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Structure](json-structure/postalcodes-info-postal-record-structure.json)
+- [Example](examples/postalcodes-info-search-postal-codes-example.json)
+- [Example](examples/postalcodes-info-preview-country-records-example.json)
+- [Example](examples/postalcodes-info-create-download-token-example.json)
+- [Example](examples/postalcodes-info-download-country-dataset-example.json)
+- [Example](examples/postalcodes-info-get-country-lookup-page-example.json)
+- [Example](examples/postalcodes-info-postal-record-example.json)
+- [Example](examples/postalcodes-info-search-suggestion-example.json)
 
-Selling raw datasets as standalone products is prohibited, as is automated retrieval that violates `robots.txt` or institutional headers.
+## Common Properties
 
-## Citation
+- [Website](https://postalcodes.info/)
+- [Documentation](https://postalcodes.info/api)
+- [Dataset  Documentation](https://postalcodes.info/datasets)
+- [OpenAPI](https://postalcodes.info/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [License](https://postalcodes.info/licensing)
+- [License](https://opendatacommons.org/licenses/odbl/1-0/)
+- [Terms of Service](https://postalcodes.info/terms)
+- [Privacy Policy](https://postalcodes.info/privacy)
+- [Contact](https://postalcodes.info/contact)
+- [Data Sources](https://postalcodes.info/data-sources)
+- [Update Policy](https://postalcodes.info/update-policy)
+- [A P Is J S O N](https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json)
+- [Git Hub](https://github.com/PabloCirre/postalcodes-info-open-data)
+- [Citation](https://zenodo.org/records/19493709)
+- [Methodology Note](https://zenodo.org/records/19930578)
+- [Coverage Benchmark](https://zenodo.org/records/19930688)
 
-- Dataset DOI: https://zenodo.org/records/19493709
-- Methodology note: https://zenodo.org/records/19930578
-- Coverage benchmark: https://zenodo.org/records/19930688
+## Maintainers
 
-## Upstream Data Sources
-
-- [GeoNames](https://www.geonames.org/) — place, admin hierarchy, WGS84 coordinates
-- [Saudi Post (SPL)](https://splonline.com.sa/) — Saudi Arabia open-data postal workbooks
-- Kazakhstan National Open-Government Postal Index
-- Oracle Cloud — hosting infrastructure
+**FN:** Pablo Cirre, PostalCodes.info
+**Email:** social@genera.work
+**URL:** https://postalcodes.info/contact

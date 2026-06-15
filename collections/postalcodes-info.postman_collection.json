@@ -1,0 +1,604 @@
+{
+  "item": [
+    {
+      "id": "7ec7aeee-fcfd-44e8-96e1-5313354b0832",
+      "name": "Search",
+      "description": {
+        "content": "Interactive postal-code and locality lookup.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "efa4b7c9-5628-49c9-8d15-148438f70ee6",
+          "name": "Search Postal Codes, Places or Countries",
+          "request": {
+            "name": "Search Postal Codes, Places or Countries",
+            "description": {
+              "content": "Returns lightweight suggestions used by the public lookup UI. Use country filtering when the user's country is known. Postal-code coverage and granularity vary by country.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search term. Minimum 2 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Optional ISO 3166-1 alpha-2 country code filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "Optional region text filter."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e2f7c30-116d-41f8-9c1e-fc61754eb961",
+              "name": "A list of matching country, locality or postal-code suggestions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "madrid"
+                    },
+                    {
+                      "key": "country",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"Town/City\",\n    \"text\": \"Madrid\",\n    \"sub\": \"Spain\",\n    \"url\": \"/postal-codes/spain/madrid\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a0d8968-7e6c-44cd-9de9-ee4e30948815",
+          "name": "Preview Records for One Country",
+          "request": {
+            "name": "Preview Records for One Country",
+            "description": {
+              "content": "Returns up to 25,000 postal-code records for a country preview modal. For large imports, use country downloads instead of repeated live requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ajax-preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) Country slug such as spain, united-states or india."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70338d2a-52fc-440d-9344-a4556b9745c3",
+              "name": "Preview rows for the requested country, or an error object if the country is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ajax-preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "spain"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"country_code\": \"ES\",\n    \"postal_code\": \"string\",\n    \"place_name\": \"string\",\n    \"admin_name1\": \"string\",\n    \"admin_name2\": \"string\",\n    \"admin_name3\": \"string\",\n    \"latitude\": 4322.986010087176,\n    \"longitude\": 574.8020894122662\n  },\n  {\n    \"country_code\": \"ES\",\n    \"postal_code\": \"string\",\n    \"place_name\": \"string\",\n    \"admin_name1\": \"string\",\n    \"admin_name2\": \"string\",\n    \"admin_name3\": \"string\",\n    \"latitude\": 1433.1833581060794,\n    \"longitude\": 5913.519710442243\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a930ee18-9bba-4bbe-a520-a3ac92c24996",
+      "name": "Downloads",
+      "description": {
+        "content": "Country-level CSV, XLSX and JSON exports.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88adc9f5-21df-415b-9df5-2e74ef9ff51f",
+          "name": "Mint a Same-Origin Download Token",
+          "request": {
+            "name": "Mint a Same-Origin Download Token",
+            "description": {
+              "content": "Browser download flow endpoint. It requires a same-origin Referer and X-Requested-With: XMLHttpRequest. The token is used by /download.php.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "download-token.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Requested-With",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Referer",
+                "value": "<uri>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6006a436-b4d8-4b66-b193-e46e06009c23",
+              "name": "Download token response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download-token.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Requested-With",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Referer",
+                    "value": "<uri>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8730fef-e995-4179-966d-4ed93d22a452",
+              "name": "Missing same-origin browser headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download-token.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Requested-With",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Referer",
+                    "value": "<uri>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e8d4c26-bfaf-4708-be3a-955677c77d7e",
+          "name": "Download a Country Dataset",
+          "request": {
+            "name": "Download a Country Dataset",
+            "description": {
+              "content": "Downloads one country dataset as CSV, XLSX or JSON after a same-origin token has been minted. Store postal codes as text; do not convert them to integers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "download.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) ISO 3166-1 alpha-2 country code."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "(Required) Export format."
+                },
+                {
+                  "disabled": false,
+                  "key": "t",
+                  "value": "<string>",
+                  "description": "(Required) Download token from /download-token.php."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eae1a973-a4de-4839-acdb-abed782a8d3f",
+              "name": "Country dataset file in the requested format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "es"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "t",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"country_code\": \"ES\",\n    \"postal_code\": \"string\",\n    \"place_name\": \"string\",\n    \"admin_name1\": \"string\",\n    \"admin_name2\": \"string\",\n    \"admin_name3\": \"string\",\n    \"latitude\": 4322.986010087176,\n    \"longitude\": 574.8020894122662\n  },\n  {\n    \"country_code\": \"ES\",\n    \"postal_code\": \"string\",\n    \"place_name\": \"string\",\n    \"admin_name1\": \"string\",\n    \"admin_name2\": \"string\",\n    \"admin_name3\": \"string\",\n    \"latitude\": 1433.1833581060794,\n    \"longitude\": 5913.519710442243\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65f292a8-e254-40e4-8ff1-f616482050d3",
+              "name": "Invalid or missing token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "es"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "t",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "502a9661-caf3-492a-a0d6-f1a271feeeda",
+      "name": "Lookup Pages",
+      "description": {
+        "content": "Canonical HTML pages for manual review and citation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31d23677-4396-4f42-a3b3-41efbed7e46b",
+          "name": "Open a Country Postal-Code Reference Page",
+          "request": {
+            "name": "Open a Country Postal-Code Reference Page",
+            "description": {},
+            "url": {
+              "path": [
+                "postal-codes",
+                ":country"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "country",
+                  "description": "(Required) Country slug."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed9cadba-c6ba-4a64-b971-c3112566dcea",
+              "name": "Canonical HTML page for a country dataset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "postal-codes",
+                    ":country"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "country",
+                      "description": "(Required) Country slug."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://postalcodes.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e2b4e1bb-b8dd-4e82-97b6-5453f7353a3a",
+    "name": "PostalCodes.info Postal Code Reference API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PostalCodes.info exposes postal-code reference data for lookup, testing, education, geospatial examples and data-quality workflows. Coverage and granularity vary by country. This is not an official delivery-grade postal authority API; validate shipping, compliance and certified address decisions against the relevant national postal authority.\n\nContact Support:\n Name: Pablo Cirre, PostalCodes.info\n Email: social@genera.work",
+      "type": "text/plain"
+    }
+  }
+}

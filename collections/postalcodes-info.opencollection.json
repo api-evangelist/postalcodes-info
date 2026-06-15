@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PostalCodes.info Postal Code Reference API",
+    "version": "2026-05-05"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Postal Codes, Places or Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://postalcodes.info/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term. Minimum 2 characters."
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Optional ISO 3166-1 alpha-2 country code filter."
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Optional region text filter."
+              }
+            ]
+          },
+          "docs": "Returns lightweight suggestions used by the public lookup UI. Use country filtering when the user's country is known. Postal-code coverage and granularity vary by country."
+        },
+        {
+          "info": {
+            "name": "Preview Records for One Country",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://postalcodes.info/ajax-preview",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Country slug such as spain, united-states or india."
+              }
+            ]
+          },
+          "docs": "Returns up to 25,000 postal-code records for a country preview modal. For large imports, use country downloads instead of repeated live requests."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Downloads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mint a Same-Origin Download Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://postalcodes.info/download-token.php",
+            "headers": [
+              {
+                "name": "X-Requested-With",
+                "value": ""
+              },
+              {
+                "name": "Referer",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Browser download flow endpoint. It requires a same-origin Referer and X-Requested-With: XMLHttpRequest. The token is used by /download.php."
+        },
+        {
+          "info": {
+            "name": "Download a Country Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://postalcodes.info/download.php",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Export format."
+              },
+              {
+                "name": "t",
+                "value": "",
+                "type": "query",
+                "description": "Download token from /download-token.php."
+              }
+            ]
+          },
+          "docs": "Downloads one country dataset as CSV, XLSX or JSON after a same-origin token has been minted. Store postal codes as text; do not convert them to integers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lookup Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Open a Country Postal-Code Reference Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://postalcodes.info/postal-codes/:country",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "path",
+                "description": "Country slug."
+              }
+            ]
+          },
+          "docs": "Open a Country Postal-Code Reference Page"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
