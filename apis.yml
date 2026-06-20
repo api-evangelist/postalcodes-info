@@ -2,7 +2,7 @@ aid: postalcodes-info
 url: https://raw.githubusercontent.com/api-evangelist/postalcodes-info/refs/heads/main/apis.yml
 name: PostalCodes.info
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 description: >-
   Postal-code lookup, search, country exports, and address validation worldwide. PostalCodes.info publishes a
   same-origin reference API and bulk CSV / JSON / XLSX downloads for 123+ countries, anchored on GeoNames and national
