@@ -120,19 +120,19 @@ apis:
         url: json-schema/postalcodes-info-error-schema.json
       - type: JSONStructure
         url: json-structure/postalcodes-info-postal-record-structure.json
-      - type: Example
+      - type: Examples
         url: examples/postalcodes-info-search-postal-codes-example.json
-      - type: Example
+      - type: Examples
         url: examples/postalcodes-info-preview-country-records-example.json
-      - type: Example
+      - type: Examples
         url: examples/postalcodes-info-create-download-token-example.json
-      - type: Example
+      - type: Examples
         url: examples/postalcodes-info-download-country-dataset-example.json
-      - type: Example
+      - type: Examples
         url: examples/postalcodes-info-get-country-lookup-page-example.json
-      - type: Example
+      - type: Examples
         url: examples/postalcodes-info-postal-record-example.json
-      - type: Example
+      - type: Examples
         url: examples/postalcodes-info-search-suggestion-example.json
     contact:
       - FN: Pablo Cirre, PostalCodes.info
