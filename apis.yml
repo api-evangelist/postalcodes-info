@@ -17,6 +17,8 @@ tags:
   - Address Validation
   - Logistics
 common:
+  - type: DomainSecurity
+    url: security/postalcodes-info-domain-security.yml
   - url: https://postalcodes.info/
     type: Website
   - url: https://postalcodes.info/api
