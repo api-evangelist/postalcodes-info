@@ -1,0 +1,44 @@
+openapi: 3.1.0
+info:
+  title: PostalCodes.info Postal Code Reference Downloads Lookup Pages API
+  summary: Same-origin postal-code search, country export and lookup-page endpoints.
+  description: PostalCodes.info exposes postal-code reference data for lookup, testing, education, geospatial examples and data-quality workflows. Coverage and granularity vary by country. This is not an official delivery-grade postal authority API; validate shipping, compliance and certified address decisions against the relevant national postal authority.
+  version: '2026-05-05'
+  contact:
+    name: Pablo Cirre, PostalCodes.info
+    url: https://postalcodes.info/contact
+    email: social@genera.work
+  license:
+    name: Open Database License 1.0
+    url: https://opendatacommons.org/licenses/odbl/1-0/
+servers:
+- url: https://postalcodes.info
+  description: Canonical production host
+tags:
+- name: Lookup Pages
+  description: Canonical HTML pages for manual review and citation.
+paths:
+  /postal-codes/{country}:
+    get:
+      tags:
+      - Lookup Pages
+      summary: Open a Country Postal-Code Reference Page
+      operationId: getCountryLookupPage
+      parameters:
+      - name: country
+        in: path
+        required: true
+        description: Country slug.
+        schema:
+          type: string
+          examples:
+          - spain
+          - united-states
+          - india
+      responses:
+        '200':
+          description: Canonical HTML page for a country dataset.
+          content:
+            text/html:
+              schema:
+                type: string

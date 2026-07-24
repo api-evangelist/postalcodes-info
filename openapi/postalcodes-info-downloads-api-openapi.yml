@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  title: PostalCodes.info Postal Code Reference Downloads API
+  summary: Same-origin postal-code search, country export and lookup-page endpoints.
+  description: PostalCodes.info exposes postal-code reference data for lookup, testing, education, geospatial examples and data-quality workflows. Coverage and granularity vary by country. This is not an official delivery-grade postal authority API; validate shipping, compliance and certified address decisions against the relevant national postal authority.
+  version: '2026-05-05'
+  contact:
+    name: Pablo Cirre, PostalCodes.info
+    url: https://postalcodes.info/contact
+    email: social@genera.work
+  license:
+    name: Open Database License 1.0
+    url: https://opendatacommons.org/licenses/odbl/1-0/
+servers:
+- url: https://postalcodes.info
+  description: Canonical production host
+tags:
+- name: Downloads
+  description: Country-level CSV, XLSX and JSON exports.
+paths:
+  /download-token.php:
+    get:
+      tags:
+      - Downloads
+      summary: Mint a Same-Origin Download Token
+      description: 'Browser download flow endpoint. It requires a same-origin Referer and X-Requested-With: XMLHttpRequest. The token is used by /download.php.'
+      operationId: createDownloadToken
+      parameters:
+      - name: X-Requested-With
+        in: header
+        required: true
+        schema:
+          type: string
+          const: XMLHttpRequest
+      - name: Referer
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uri
+      responses:
+        '200':
+          description: Download token response.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - token
+                properties:
+                  token:
+                    type: string
+        '403':
+          description: Missing same-origin browser headers.
+  /download.php:
+    get:
+      tags:
+      - Downloads
+      summary: Download a Country Dataset
+      description: Downloads one country dataset as CSV, XLSX or JSON after a same-origin token has been minted. Store postal codes as text; do not convert them to integers.
+      operationId: downloadCountryDataset
+      parameters:
+      - name: country
+        in: query
+        required: true
+        description: ISO 3166-1 alpha-2 country code.
+        schema:
+          type: string
+          pattern: ^[A-Za-z]{2}$
+          examples:
+          - es
+          - us
+          - in
+      - name: format
+        in: query
+        required: true
+        description: Export format.
+        schema:
+          type: string
+          enum:
+          - csv
+          - xlsx
+          - json
+      - name: t
+        in: query
+        required: true
+        description: Download token from /download-token.php.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Country dataset file in the requested format.
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostalRecord'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        '403':
+          description: Invalid or missing token.
+components:
+  schemas:
+    PostalRecord:
+      type: object
+      properties:
+        country_code:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+          examples:
+          - ES
+          - US
+        postal_code:
+          type: string
+          description: Postal identifier as text. It may contain leading zeroes, spaces, letters or punctuation.
+        place_name:
+          type: string
+        admin_name1:
+          type:
+          - string
+          - 'null'
+        admin_name2:
+          type:
+          - string
+          - 'null'
+        admin_name3:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type:
+          - number
+          - 'null'
+          description: Approximate locality or area centroid, not a delivery-point coordinate.
+        longitude:
+          type:
+          - number
+          - 'null'
+          description: Approximate locality or area centroid, not a delivery-point coordinate.
