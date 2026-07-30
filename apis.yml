@@ -2,7 +2,19 @@ aid: postalcodes-info
 url: https://raw.githubusercontent.com/api-evangelist/postalcodes-info/refs/heads/main/apis.yml
 name: PostalCodes.info
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/postalcodes-info.png
 description: >-
   Postal-code lookup, search, country exports, and address validation worldwide. PostalCodes.info publishes a
   same-origin reference API and bulk CSV / JSON / XLSX downloads for 123+ countries, anchored on GeoNames and national
@@ -60,92 +72,204 @@ maintainers:
     email: social@genera.work
     x-organization: PostalCodes.info (Global Postal Code Repository)
 apis:
-  - aid: postalcodes-info:postal-code-reference-api
-    name: PostalCodes.info Postal Code Reference API
-    description: >-
-      Same-origin postal-code search, country export, and lookup-page endpoints used by the public PostalCodes.info UI.
-      Coverage spans 123+ countries with approximately 1.83M postal records and 99.2% geocoding coverage on locality
-      centroids. Designed for lookup, testing, education, geospatial examples, and data-quality workflows. Not a
-      delivery-grade postal authority API.
-    humanURL: https://postalcodes.info/api
-    baseURL: https://postalcodes.info
-    image: https://postalcodes.info/assets/images/og-main.png
-    version: '2026-05-05'
-    tags:
-      - Postal Codes
-      - Geocoding
-      - Open Data
-      - Address Validation
-      - Logistics
-    properties:
-      - type: Documentation
-        url: https://postalcodes.info/api
-      - type: OpenAPI
-        url: https://postalcodes.info/openapi.json
-      - type: OpenAPI
-        url: openapi/postalcodes-info-openapi.yml
-      - type: Dataset Documentation
-        url: https://postalcodes.info/datasets
-      - type: License
-        url: https://opendatacommons.org/licenses/odbl/1-0/
-      - type: License
-        url: https://postalcodes.info/licensing
-      - type: TermsOfService
-        url: https://postalcodes.info/terms
-      - type: PrivacyPolicy
-        url: https://postalcodes.info/privacy
-      - type: UpdatePolicy
-        url: https://postalcodes.info/update-policy
-      - type: DataSources
-        url: https://postalcodes.info/data-sources
-      - type: Citation
-        url: https://zenodo.org/records/19493709
-      - type: APIsJSON
-        url: https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json
-      - type: GitHub
-        url: https://github.com/PabloCirre/postalcodes-info-open-data
-      - type: SpectralRules
-        url: rules/postalcodes-info-rules.yml
-      - type: Plans
-        url: plans/postalcodes-info-plans-pricing.yml
-      - type: RateLimits
-        url: rate-limits/postalcodes-info-rate-limits.yml
-      - type: FinOps
-        url: finops/postalcodes-info-finops.yml
-      - type: Vocabulary
-        url: vocabulary/postalcodes-info-vocabulary.yml
-      - type: JSONLD
-        url: json-ld/postalcodes-info-context.jsonld
-      - type: JSONSchema
-        url: json-schema/postalcodes-info-postal-record-schema.json
-      - type: JSONSchema
-        url: json-schema/postalcodes-info-search-suggestion-schema.json
-      - type: JSONSchema
-        url: json-schema/postalcodes-info-error-schema.json
-      - type: JSONStructure
-        url: json-structure/postalcodes-info-postal-record-structure.json
-      - type: Examples
-        url: examples/postalcodes-info-search-postal-codes-example.json
-      - type: Examples
-        url: examples/postalcodes-info-preview-country-records-example.json
-      - type: Examples
-        url: examples/postalcodes-info-create-download-token-example.json
-      - type: Examples
-        url: examples/postalcodes-info-download-country-dataset-example.json
-      - type: Examples
-        url: examples/postalcodes-info-get-country-lookup-page-example.json
-      - type: Examples
-        url: examples/postalcodes-info-postal-record-example.json
-      - type: Examples
-        url: examples/postalcodes-info-search-suggestion-example.json
-    contact:
-      - FN: Pablo Cirre, PostalCodes.info
-        email: social@genera.work
-        url: https://postalcodes.info/contact
-    overlays: []
-    aka:
-      - Postal Codes Info API
-      - Global Postal Code Repository API
+- aid: postalcodes-info:postalcodes-info-downloads-api
+  name: PostalCodes.info Downloads API
+  description: Country-level CSV, XLSX and JSON exports.
+  humanURL: https://postalcodes.info/api
+  baseURL: https://postalcodes.info
+  tags:
+  - Downloads
+  properties:
+  - type: OpenAPI
+    url: openapi/postalcodes-info-downloads-api-openapi.yml
+  - type: Documentation
+    url: https://postalcodes.info/api
+  - type: Dataset Documentation
+    url: https://postalcodes.info/datasets
+  - type: License
+    url: https://opendatacommons.org/licenses/odbl/1-0/
+  - type: License
+    url: https://postalcodes.info/licensing
+  - type: TermsOfService
+    url: https://postalcodes.info/terms
+  - type: PrivacyPolicy
+    url: https://postalcodes.info/privacy
+  - type: UpdatePolicy
+    url: https://postalcodes.info/update-policy
+  - type: DataSources
+    url: https://postalcodes.info/data-sources
+  - type: Citation
+    url: https://zenodo.org/records/19493709
+  - type: APIsJSON
+    url: https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json
+  - type: GitHub
+    url: https://github.com/PabloCirre/postalcodes-info-open-data
+  - type: SpectralRules
+    url: rules/postalcodes-info-rules.yml
+  - type: Plans
+    url: plans/postalcodes-info-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/postalcodes-info-rate-limits.yml
+  - type: FinOps
+    url: finops/postalcodes-info-finops.yml
+  - type: Vocabulary
+    url: vocabulary/postalcodes-info-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/postalcodes-info-context.jsonld
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-postal-record-schema.json
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-search-suggestion-schema.json
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-error-schema.json
+  - type: JSONStructure
+    url: json-structure/postalcodes-info-postal-record-structure.json
+  - type: Examples
+    url: examples/postalcodes-info-search-postal-codes-example.json
+  - type: Examples
+    url: examples/postalcodes-info-preview-country-records-example.json
+  - type: Examples
+    url: examples/postalcodes-info-create-download-token-example.json
+  - type: Examples
+    url: examples/postalcodes-info-download-country-dataset-example.json
+  - type: Examples
+    url: examples/postalcodes-info-get-country-lookup-page-example.json
+  - type: Examples
+    url: examples/postalcodes-info-postal-record-example.json
+  - type: Examples
+    url: examples/postalcodes-info-search-suggestion-example.json
+- aid: postalcodes-info:postalcodes-info-lookup-pages-api
+  name: PostalCodes.info Lookup Pages API
+  description: Canonical HTML pages for manual review and citation.
+  humanURL: https://postalcodes.info/api
+  baseURL: https://postalcodes.info
+  tags:
+  - Lookup Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/postalcodes-info-lookup-pages-api-openapi.yml
+  - type: Documentation
+    url: https://postalcodes.info/api
+  - type: Dataset Documentation
+    url: https://postalcodes.info/datasets
+  - type: License
+    url: https://opendatacommons.org/licenses/odbl/1-0/
+  - type: License
+    url: https://postalcodes.info/licensing
+  - type: TermsOfService
+    url: https://postalcodes.info/terms
+  - type: PrivacyPolicy
+    url: https://postalcodes.info/privacy
+  - type: UpdatePolicy
+    url: https://postalcodes.info/update-policy
+  - type: DataSources
+    url: https://postalcodes.info/data-sources
+  - type: Citation
+    url: https://zenodo.org/records/19493709
+  - type: APIsJSON
+    url: https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json
+  - type: GitHub
+    url: https://github.com/PabloCirre/postalcodes-info-open-data
+  - type: SpectralRules
+    url: rules/postalcodes-info-rules.yml
+  - type: Plans
+    url: plans/postalcodes-info-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/postalcodes-info-rate-limits.yml
+  - type: FinOps
+    url: finops/postalcodes-info-finops.yml
+  - type: Vocabulary
+    url: vocabulary/postalcodes-info-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/postalcodes-info-context.jsonld
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-postal-record-schema.json
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-search-suggestion-schema.json
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-error-schema.json
+  - type: JSONStructure
+    url: json-structure/postalcodes-info-postal-record-structure.json
+  - type: Examples
+    url: examples/postalcodes-info-search-postal-codes-example.json
+  - type: Examples
+    url: examples/postalcodes-info-preview-country-records-example.json
+  - type: Examples
+    url: examples/postalcodes-info-create-download-token-example.json
+  - type: Examples
+    url: examples/postalcodes-info-download-country-dataset-example.json
+  - type: Examples
+    url: examples/postalcodes-info-get-country-lookup-page-example.json
+  - type: Examples
+    url: examples/postalcodes-info-postal-record-example.json
+  - type: Examples
+    url: examples/postalcodes-info-search-suggestion-example.json
+- aid: postalcodes-info:postalcodes-info-search-api
+  name: PostalCodes.info Search API
+  description: Interactive postal-code and locality lookup.
+  humanURL: https://postalcodes.info/api
+  baseURL: https://postalcodes.info
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/postalcodes-info-search-api-openapi.yml
+  - type: Documentation
+    url: https://postalcodes.info/api
+  - type: Dataset Documentation
+    url: https://postalcodes.info/datasets
+  - type: License
+    url: https://opendatacommons.org/licenses/odbl/1-0/
+  - type: License
+    url: https://postalcodes.info/licensing
+  - type: TermsOfService
+    url: https://postalcodes.info/terms
+  - type: PrivacyPolicy
+    url: https://postalcodes.info/privacy
+  - type: UpdatePolicy
+    url: https://postalcodes.info/update-policy
+  - type: DataSources
+    url: https://postalcodes.info/data-sources
+  - type: Citation
+    url: https://zenodo.org/records/19493709
+  - type: APIsJSON
+    url: https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json
+  - type: GitHub
+    url: https://github.com/PabloCirre/postalcodes-info-open-data
+  - type: SpectralRules
+    url: rules/postalcodes-info-rules.yml
+  - type: Plans
+    url: plans/postalcodes-info-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/postalcodes-info-rate-limits.yml
+  - type: FinOps
+    url: finops/postalcodes-info-finops.yml
+  - type: Vocabulary
+    url: vocabulary/postalcodes-info-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/postalcodes-info-context.jsonld
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-postal-record-schema.json
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-search-suggestion-schema.json
+  - type: JSONSchema
+    url: json-schema/postalcodes-info-error-schema.json
+  - type: JSONStructure
+    url: json-structure/postalcodes-info-postal-record-structure.json
+  - type: Examples
+    url: examples/postalcodes-info-search-postal-codes-example.json
+  - type: Examples
+    url: examples/postalcodes-info-preview-country-records-example.json
+  - type: Examples
+    url: examples/postalcodes-info-create-download-token-example.json
+  - type: Examples
+    url: examples/postalcodes-info-download-country-dataset-example.json
+  - type: Examples
+    url: examples/postalcodes-info-get-country-lookup-page-example.json
+  - type: Examples
+    url: examples/postalcodes-info-postal-record-example.json
+  - type: Examples
+    url: examples/postalcodes-info-search-suggestion-example.json
 features:
   - Same-origin lookup search across countries, localities and postal codes
   - Country preview endpoint returning up to 25,000 records for UI previews
