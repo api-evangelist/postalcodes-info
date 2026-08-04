@@ -1,0 +1,18 @@
+{
+  "provider": "postalcodes-info",
+  "sources": [
+    "postalcodes-info-downloads-api-openapi.yml",
+    "postalcodes-info-lookup-pages-api-openapi.yml",
+    "postalcodes-info-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "postalcodes-info-downloads-api-openapi.yml",
+    "postalcodes-info-lookup-pages-api-openapi.yml",
+    "postalcodes-info-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
