@@ -1,0 +1,216 @@
+{
+  "item": [
+    {
+      "id": "f30ca52c-4d2f-4219-9462-47e35a984d90",
+      "name": "Search",
+      "description": {
+        "content": "Interactive postal-code and locality lookup.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "231afdae-08be-4dd7-b755-d613e5a080db",
+          "name": "Search Postal Codes, Places or Countries",
+          "request": {
+            "name": "Search Postal Codes, Places or Countries",
+            "description": {
+              "content": "Returns lightweight suggestions used by the public lookup UI. Use country filtering when the user's country is known. Postal-code coverage and granularity vary by country.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search term. Minimum 2 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Optional ISO 3166-1 alpha-2 country code filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "Optional region text filter."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9afd03f-b4c2-4b4e-acd3-e45a4c9e3113",
+              "name": "A list of matching country, locality or postal-code suggestions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "madrid"
+                    },
+                    {
+                      "key": "country",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"Town/City\",\n    \"text\": \"Madrid\",\n    \"sub\": \"Spain\",\n    \"url\": \"/postal-codes/spain/madrid\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07cdc8e1-1637-4b12-adb7-febc5e460a6c",
+          "name": "Preview Records for One Country",
+          "request": {
+            "name": "Preview Records for One Country",
+            "description": {
+              "content": "Returns up to 25,000 postal-code records for a country preview modal. For large imports, use country downloads instead of repeated live requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ajax-preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) Country slug such as spain, united-states or india."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1bb4a375-d0fe-467e-b8de-d265ec788a36",
+              "name": "Preview rows for the requested country, or an error object if the country is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ajax-preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "spain"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"country_code\": \"ES\",\n    \"postal_code\": \"string\",\n    \"place_name\": \"string\",\n    \"admin_name1\": \"string\",\n    \"admin_name2\": \"string\",\n    \"admin_name3\": \"string\",\n    \"latitude\": 8772.941131089876,\n    \"longitude\": 8287.092567711554\n  },\n  {\n    \"country_code\": \"ES\",\n    \"postal_code\": \"string\",\n    \"place_name\": \"string\",\n    \"admin_name1\": \"string\",\n    \"admin_name2\": \"string\",\n    \"admin_name3\": \"string\",\n    \"latitude\": 5996.94835250626,\n    \"longitude\": 3376.6678911969816\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://postalcodes.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1d7c4e78-d5df-4818-b3d1-496b83ca324b",
+    "name": "PostalCodes.info Postal Code Reference Downloads Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PostalCodes.info exposes postal-code reference data for lookup, testing, education, geospatial examples and data-quality workflows. Coverage and granularity vary by country. This is not an official delivery-grade postal authority API; validate shipping, compliance and certified address decisions against the relevant national postal authority.\n\nContact Support:\n Name: Pablo Cirre, PostalCodes.info\n Email: social@genera.work",
+      "type": "text/plain"
+    }
+  }
+}

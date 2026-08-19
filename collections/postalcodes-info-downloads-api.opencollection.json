@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PostalCodes.info Postal Code Reference Downloads API",
+    "version": "2026-05-05"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Downloads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mint a Same-Origin Download Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://postalcodes.info/download-token.php",
+            "headers": [
+              {
+                "name": "X-Requested-With",
+                "value": ""
+              },
+              {
+                "name": "Referer",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Browser download flow endpoint. It requires a same-origin Referer and X-Requested-With: XMLHttpRequest. The token is used by /download.php."
+        },
+        {
+          "info": {
+            "name": "Download a Country Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://postalcodes.info/download.php",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Export format."
+              },
+              {
+                "name": "t",
+                "value": "",
+                "type": "query",
+                "description": "Download token from /download-token.php."
+              }
+            ]
+          },
+          "docs": "Downloads one country dataset as CSV, XLSX or JSON after a same-origin token has been minted. Store postal codes as text; do not convert them to integers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

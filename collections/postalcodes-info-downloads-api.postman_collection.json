@@ -1,0 +1,313 @@
+{
+  "item": [
+    {
+      "id": "80c1e767-7635-48b2-ade4-9d7163b3a6c8",
+      "name": "Downloads",
+      "description": {
+        "content": "Country-level CSV, XLSX and JSON exports.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d4f680ce-9d34-45a7-9c61-4ea826fd1e5d",
+          "name": "Mint a Same-Origin Download Token",
+          "request": {
+            "name": "Mint a Same-Origin Download Token",
+            "description": {
+              "content": "Browser download flow endpoint. It requires a same-origin Referer and X-Requested-With: XMLHttpRequest. The token is used by /download.php.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "download-token.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Requested-With",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Referer",
+                "value": "<uri>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b393f9cd-6148-412f-9aeb-e164c244c19d",
+              "name": "Download token response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download-token.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Requested-With",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Referer",
+                    "value": "<uri>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46b240a0-d23d-46b5-8023-6a57ddeb891e",
+              "name": "Missing same-origin browser headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download-token.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Requested-With",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Referer",
+                    "value": "<uri>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75455940-9e94-4675-aa62-8b720e0ce492",
+          "name": "Download a Country Dataset",
+          "request": {
+            "name": "Download a Country Dataset",
+            "description": {
+              "content": "Downloads one country dataset as CSV, XLSX or JSON after a same-origin token has been minted. Store postal codes as text; do not convert them to integers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "download.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) ISO 3166-1 alpha-2 country code."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "(Required) Export format."
+                },
+                {
+                  "disabled": false,
+                  "key": "t",
+                  "value": "<string>",
+                  "description": "(Required) Download token from /download-token.php."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0ce9a5a5-6669-4a34-9618-ba20d8363fd7",
+              "name": "Country dataset file in the requested format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "es"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "t",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"country_code\": \"ES\",\n    \"postal_code\": \"string\",\n    \"place_name\": \"string\",\n    \"admin_name1\": \"string\",\n    \"admin_name2\": \"string\",\n    \"admin_name3\": \"string\",\n    \"latitude\": 243.5444856240765,\n    \"longitude\": 2335.5893842229116\n  },\n  {\n    \"country_code\": \"ES\",\n    \"postal_code\": \"string\",\n    \"place_name\": \"string\",\n    \"admin_name1\": \"string\",\n    \"admin_name2\": \"string\",\n    \"admin_name3\": \"string\",\n    \"latitude\": 2458.7706532173916,\n    \"longitude\": 3018.5414264339015\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a97ab36-de3c-48f8-a224-e4701a5a776c",
+              "name": "Invalid or missing token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "es"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "t",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://postalcodes.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "63b06d2d-7e99-45da-893b-582ca08e8a5a",
+    "name": "PostalCodes.info Postal Code Reference Downloads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PostalCodes.info exposes postal-code reference data for lookup, testing, education, geospatial examples and data-quality workflows. Coverage and granularity vary by country. This is not an official delivery-grade postal authority API; validate shipping, compliance and certified address decisions against the relevant national postal authority.\n\nContact Support:\n Name: Pablo Cirre, PostalCodes.info\n Email: social@genera.work",
+      "type": "text/plain"
+    }
+  }
+}

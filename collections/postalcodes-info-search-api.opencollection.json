@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PostalCodes.info Postal Code Reference Downloads Search API",
+    "version": "2026-05-05"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Postal Codes, Places or Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://postalcodes.info/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term. Minimum 2 characters."
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Optional ISO 3166-1 alpha-2 country code filter."
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Optional region text filter."
+              }
+            ]
+          },
+          "docs": "Returns lightweight suggestions used by the public lookup UI. Use country filtering when the user's country is known. Postal-code coverage and granularity vary by country."
+        },
+        {
+          "info": {
+            "name": "Preview Records for One Country",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://postalcodes.info/ajax-preview",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Country slug such as spain, united-states or india."
+              }
+            ]
+          },
+          "docs": "Returns up to 25,000 postal-code records for a country preview modal. For large imports, use country downloads instead of repeated live requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
