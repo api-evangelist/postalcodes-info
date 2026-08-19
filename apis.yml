@@ -21,7 +21,7 @@ description: >-
   open-data feeds, released under the Open Database License (ODbL) 1.0.
 created: '2026-05-16'
 modified: '2026-05-19'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 tags:
   - Postal Codes
   - Geocoding
