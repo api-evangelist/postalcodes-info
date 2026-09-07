@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: PostalCodes.info Postal Code Reference Downloads Search API
   summary: Same-origin postal-code search, country export and lookup-page endpoints.
@@ -102,6 +102,40 @@ paths:
                 - $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    SearchSuggestion:
+      type: object
+      required:
+      - type
+      - text
+      - sub
+      - url
+      properties:
+        type:
+          type: string
+          examples:
+          - Country
+          - Town/City
+          - Postal Code
+        text:
+          type: string
+          examples:
+          - Madrid
+          - 90210 (Beverly Hills)
+        sub:
+          type: string
+          examples:
+          - Spain
+          - United States
+        url:
+          type: string
+          examples:
+          - /postal-codes/spain/madrid
+          - /postal-codes/united-states/code/90210
     PostalRecord:
       type: object
       properties:
@@ -138,37 +172,3 @@ components:
           - number
           - 'null'
           description: Approximate locality or area centroid, not a delivery-point coordinate.
-    SearchSuggestion:
-      type: object
-      required:
-      - type
-      - text
-      - sub
-      - url
-      properties:
-        type:
-          type: string
-          examples:
-          - Country
-          - Town/City
-          - Postal Code
-        text:
-          type: string
-          examples:
-          - Madrid
-          - 90210 (Beverly Hills)
-        sub:
-          type: string
-          examples:
-          - Spain
-          - United States
-        url:
-          type: string
-          examples:
-          - /postal-codes/spain/madrid
-          - /postal-codes/united-states/code/90210
-    Error:
-      type: object
-      properties:
-        error:
-          type: string

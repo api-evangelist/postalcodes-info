@@ -351,3 +351,5 @@ x-common:
     url: rate-limits/postalcodes-info-rate-limits.yml
   - type: FinOps
     url: finops/postalcodes-info-finops.yml
+x-parent: postalcodes
+x-relationship: product
