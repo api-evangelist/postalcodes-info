@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: PostalCodes.info Postal Code Reference Downloads Lookup Pages API
+  title: PostalCodes.info Postal Code Reference Lookup Pages API
   summary: Same-origin postal-code search, country export and lookup-page endpoints.
   description: PostalCodes.info exposes postal-code reference data for lookup, testing, education, geospatial examples and data-quality workflows. Coverage and granularity vary by country. This is not an official delivery-grade postal authority API; validate shipping, compliance and certified address decisions against the relevant national postal authority.
   version: '2026-05-05'

@@ -1,9 +1,7 @@
 {
   "provider": "postalcodes-info",
   "sources": [
-    "postalcodes-info-downloads-api-openapi.yml",
-    "postalcodes-info-lookup-pages-api-openapi.yml",
-    "postalcodes-info-search-api-openapi.yml"
+    "_original/postalcodes-info-openapi.yml"
   ],
   "outputs": [
     "postalcodes-info-downloads-api-openapi.yml",
@@ -14,10 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "postalcodes-info-downloads-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "postalcodes-info-lookup-pages-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "postalcodes-info-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "postalcodes-info-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "postalcodes-info-downloads-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "postalcodes-info-lookup-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "postalcodes-info-search-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
