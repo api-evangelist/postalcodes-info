@@ -4,15 +4,19 @@ name: PostalCodes.info
 type: Index
 deliveryModel:
   model: saas
-  open_source: false
+  license_evidence:
+    not_product:
+    - pablocirre/postalcodes-info-open-data
+  open_source: unknown
   commercial: true
   callable_host: true
   label: Hosted service · you call their endpoint
-  confidence: high
+  confidence: low
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: free
@@ -88,7 +92,6 @@ apis:
   name: PostalCodes.info Downloads API
   description: Country-level CSV, XLSX and JSON exports.
   humanURL: https://postalcodes.info/api
-  baseURL: https://postalcodes.info
   tags:
   - Downloads
   properties:
@@ -154,7 +157,6 @@ apis:
   name: PostalCodes.info Lookup Pages API
   description: Canonical HTML pages for manual review and citation.
   humanURL: https://postalcodes.info/api
-  baseURL: https://postalcodes.info
   tags:
   - Lookup Pages
   properties:
@@ -220,7 +222,6 @@ apis:
   name: PostalCodes.info Search API
   description: Interactive postal-code and locality lookup.
   humanURL: https://postalcodes.info/api
-  baseURL: https://postalcodes.info
   tags:
   - Search
   properties:
