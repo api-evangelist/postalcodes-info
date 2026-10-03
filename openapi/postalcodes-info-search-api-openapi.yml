@@ -102,6 +102,11 @@ paths:
                 - $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
     SearchSuggestion:
       type: object
       required:
@@ -131,11 +136,6 @@ components:
           examples:
           - /postal-codes/spain/madrid
           - /postal-codes/united-states/code/90210
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
     PostalRecord:
       type: object
       properties:
