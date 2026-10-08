@@ -76,3 +76,15 @@ references:
     url: https://postalcodes.info/update-policy
   - type: DataSources
     url: https://postalcodes.info/data-sources
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Open Data Public Access
+    access: free
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
