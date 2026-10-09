@@ -1,0 +1,28 @@
+# Front Door AI Index — postalcodes-info — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: postalcodes-info
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: postalcodes.info
+  final_host: postalcodes.info
+  ownership: shared
+  owner: postalcodes
+  shares_host_with:
+  - postalcodes
+  inherited_from: null
+  alias_of: null
+  verdict: silent
+  score: null
+  band: null
+  band_label: null
+  host_score: 0
+  density: null
+  words: 1585
+  tiers:
+    agentic: 0
+    core: 0
+    model: 0
+  ambiguous: 0
+  top_terms: null
