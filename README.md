@@ -1,4 +1,4 @@
-# PostalCodes.info (postalcodes-info)
+# PostalCodes.info
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,98 +66,164 @@
 
 Postal-code lookup, search, country exports, and address validation worldwide. PostalCodes.info publishes a same-origin reference API and bulk CSV / JSON / XLSX downloads for 123+ countries, anchored on GeoNames and national open-data feeds, released under the Open Database License (ODbL) 1.0.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/postalcodes-info/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/postalcodes-info/refs/heads/main/apis.yml)
+**Areas:** Postal Codes · Geocoding · Open Data · Address Validation · Logistics
 
-## Scope
+## PostalCodes.info on APIs.io
 
-- **Type:** Index
+Everything profiled for PostalCodes.info is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/postalcodes-info/](https://apis.io/providers/postalcodes-info/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Postal Codes
-- Geocoding
-- Open Data
-- Address Validation
-- Logistics
+- [PostalCodes.info Downloads API](https://apis.io/apis/postalcodes-info/postalcodes-info-downloads-api/) — Country-level CSV, XLSX and JSON exports.
+- [PostalCodes.info Lookup Pages API](https://apis.io/apis/postalcodes-info/postalcodes-info-lookup-pages-api/) — Canonical HTML pages for manual review and citation.
+- [PostalCodes.info Search API](https://apis.io/apis/postalcodes-info/postalcodes-info-search-api/) — Interactive postal-code and locality lookup.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### PostalCodes.info Postal Code Reference API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Same-origin postal-code search, country export, and lookup-page endpoints used by the public PostalCodes.info UI. Coverage spans 123+ countries with approximately 1.83M postal records and 99.2% geocoding coverage on locality centroids. Designed for lookup, testing, education, geospatial examples, and data-quality workflows. Not a delivery-grade postal authority API.
+- [Postalcodes Info Agentic Access](https://apis.io/agentic-access/postalcodes-info/postalcodes-info-agentic-access/)
 
-- **Human URL:** [https://postalcodes.info/api](https://postalcodes.info/api)
-- **Base URL:** `https://postalcodes.info`
+#### JSON Schema (3)
 
-#### Tags
+The data models the API reads and writes.
 
-- Postal Codes
-- Geocoding
-- Open Data
-- Address Validation
-- Logistics
+- [Error](https://apis.io/schemas/postalcodes-info/postalcodes-info-error/)
+- [PostalRecord](https://apis.io/schemas/postalcodes-info/postalcodes-info-postal-record/)
+- [SearchSuggestion](https://apis.io/schemas/postalcodes-info/postalcodes-info-search-suggestion/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://postalcodes.info/api)
-- [OpenAPI](https://postalcodes.info/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/postalcodes-info-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/postalcodes-info.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/postalcodes-info.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Dataset  Documentation](https://postalcodes.info/datasets)
-- [License](https://opendatacommons.org/licenses/odbl/1-0/)
-- [License](https://postalcodes.info/licensing)
-- [Terms of Service](https://postalcodes.info/terms)
-- [Privacy Policy](https://postalcodes.info/privacy)
-- [Update Policy](https://postalcodes.info/update-policy)
-- [Data Sources](https://postalcodes.info/data-sources)
-- [Citation](https://zenodo.org/records/19493709)
-- [A P Is J S O N](https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json)
-- [Git Hub](https://github.com/PabloCirre/postalcodes-info-open-data)
-- [Spectral Rules](rules/postalcodes-info-rules.yml)
-- [Plans](plans/postalcodes-info-plans-pricing.yml)
-- [Rate Limits](rate-limits/postalcodes-info-rate-limits.yml)
-- [Fin Ops](finops/postalcodes-info-finops.yml)
-- [Vocabulary](vocabulary/postalcodes-info-vocabulary.yml)
-- [JSON-LD](json-ld/postalcodes-info-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/postalcodes-info-postal-record-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/postalcodes-info-search-suggestion-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/postalcodes-info-error-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/postalcodes-info-postal-record-structure.json)
-- [Example](examples/postalcodes-info-search-postal-codes-example.json)
-- [Example](examples/postalcodes-info-preview-country-records-example.json)
-- [Example](examples/postalcodes-info-create-download-token-example.json)
-- [Example](examples/postalcodes-info-download-country-dataset-example.json)
-- [Example](examples/postalcodes-info-get-country-lookup-page-example.json)
-- [Example](examples/postalcodes-info-postal-record-example.json)
-- [Example](examples/postalcodes-info-search-suggestion-example.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Postalcodes Info Postal Record Structure](https://apis.io/json-structure/postalcodes-info/postalcodes-info-postal-record-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Postalcodes Info Context](https://apis.io/jsonld/postalcodes-info/postalcodes-info-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [postalcodes-info-vocabulary](https://apis.io/vocabularies/postalcodes-info/postalcodes-info-vocabulary/)
+
+#### Examples (7)
+
+Example requests and responses.
+
+- [Postalcodes Info Create Download Token Example](https://apis.io/examples/postalcodes-info/postalcodes-info-create-download-token-example/)
+- [Postalcodes Info Download Country Dataset Example](https://apis.io/examples/postalcodes-info/postalcodes-info-download-country-dataset-example/)
+- [Postalcodes Info Get Country Lookup Page Example](https://apis.io/examples/postalcodes-info/postalcodes-info-get-country-lookup-page-example/)
+- [Postalcodes Info Postal Record Example](https://apis.io/examples/postalcodes-info/postalcodes-info-postal-record-example/)
+- [Postalcodes Info Preview Country Records Example](https://apis.io/examples/postalcodes-info/postalcodes-info-preview-country-records-example/)
+- [Postalcodes Info Search Postal Codes Example](https://apis.io/examples/postalcodes-info/postalcodes-info-search-postal-codes-example/)
+- [Postalcodes Info Search Suggestion Example](https://apis.io/examples/postalcodes-info/postalcodes-info-search-suggestion-example/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [PostalCodes.info Postal Code Reference API](https://apis.io/collections/postalcodes-info/open-postalcodes-info/)
+- [PostalCodes.info Postal Code Reference Downloads API](https://apis.io/collections/postalcodes-info/open-postalcodes-info-downloads-api/)
+- [PostalCodes.info Postal Code Reference Downloads Lookup Pages API](https://apis.io/collections/postalcodes-info/open-postalcodes-info-lookup-pages-api/)
+- [PostalCodes.info Postal Code Reference Downloads Search API](https://apis.io/collections/postalcodes-info/open-postalcodes-info-search-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [PostalCodes.info — jsonschema rules](https://apis.io/rules/postalcodes-info/postalcodes-info-jsonschema-spectral-rules/)
+- [PostalCodes.info API Rules](https://apis.io/rules/postalcodes-info/postalcodes-info-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Postalcodes Info Domain Security](https://apis.io/security/postalcodes-info/postalcodes-info-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Postalcodes Info Plans Pricing](https://apis.io/plans/postalcodes-info/postalcodes-info-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Postalcodes Info Rate Limits](https://apis.io/rate-limits/postalcodes-info/postalcodes-info-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Postalcodes Info Finops](https://apis.io/finops/postalcodes-info/postalcodes-info-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://postalcodes.info/)
 - [Documentation](https://postalcodes.info/api)
-- [Dataset  Documentation](https://postalcodes.info/datasets)
-- [OpenAPI](https://postalcodes.info/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [License](https://postalcodes.info/licensing)
-- [License](https://opendatacommons.org/licenses/odbl/1-0/)
-- [Terms of Service](https://postalcodes.info/terms)
-- [Privacy Policy](https://postalcodes.info/privacy)
-- [Contact](https://postalcodes.info/contact)
-- [Data Sources](https://postalcodes.info/data-sources)
-- [Update Policy](https://postalcodes.info/update-policy)
-- [A P Is J S O N](https://raw.githubusercontent.com/PabloCirre/postalcodes-info-open-data/main/apis.json)
-- [Git Hub](https://github.com/PabloCirre/postalcodes-info-open-data)
-- [Citation](https://zenodo.org/records/19493709)
-- [Methodology Note](https://zenodo.org/records/19930578)
-- [Coverage Benchmark](https://zenodo.org/records/19930688)
+- [Terms of service](https://postalcodes.info/terms)
+- [Privacy policy](https://postalcodes.info/privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Pablo Cirre, PostalCodes.info
-**Email:** social@genera.work
-**URL:** https://postalcodes.info/contact
+**Kin Score 32.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 59.2 |
+| Contract governance | 27.3 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 9.5 |
+| Access clarity | 26.3 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 18.6** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/postalcodes-info/](https://apis.io/providers/postalcodes-info/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for PostalCodes.info: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/postalcodes-info/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
